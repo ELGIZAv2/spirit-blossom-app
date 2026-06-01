@@ -135,9 +135,9 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: false,
-      Pro: "500 MC included",
-      Elite: "1,200 MC included",
-      Business: "3,500 MC included",
+      Pro: "50 MC included",
+      Elite: "120 MC included",
+      Business: "300 MC included",
     },
   },
   {
@@ -171,9 +171,9 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: "0 MC",
-      Pro: "500 MC / month",
-      Elite: "1,200 MC / month",
-      Business: "3,500 MC / month",
+      Pro: "50 MC / month",
+      Elite: "120 MC / month",
+      Business: "300 MC / month",
     },
   },
   {
