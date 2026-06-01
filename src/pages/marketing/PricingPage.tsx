@@ -561,7 +561,7 @@ const PricingPage = () => {
                   </GlowButton>
                   {p.tier === "starter" && (
                     <p className="mt-2 text-[11px] leading-snug" style={{ color: p.subText }}>
-                      No credit card required. 20 MC every month, forever.
+                      No credit card required. Forever free tier.
                     </p>
                   )}
 
