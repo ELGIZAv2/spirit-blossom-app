@@ -74,7 +74,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyPrice: 25,
     yearlyPrice: 250,
     monthlyCredits: "100 MC / month",
-    yearlyCredits: "$250/year — save $50 + 200 bonus MC",
+    yearlyCredits: "Save $50 + 200 bonus MC",
     features: [
       "Unlimited chat — Megsy AI",
       "Unlimited 7 days / month — Images, Slides, Docs, Deep Research & Code Builder",
@@ -98,7 +98,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyPrice: 50,
     yearlyPrice: 500,
     monthlyCredits: "250 MC / month",
-    yearlyCredits: "$500/year — save $100 + 500 bonus MC",
+    yearlyCredits: "Save $100 + 500 bonus MC",
     features: [
       "Unlimited chat — Megsy AI",
       "Unlimited 15 days / month — Images, Slides, Docs, Deep Research & Code Builder",
@@ -127,7 +127,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyPrice: 125,
     yearlyPrice: 1250,
     monthlyCredits: "600 MC / month",
-    yearlyCredits: "$1,250/year — save $250 + 1,200 bonus MC",
+    yearlyCredits: "Save $250 + 1,200 bonus MC",
     features: [
       "Unlimited chat — Megsy AI",
       "Unlimited all month — Images, Slides, Docs, Deep Research & Code Builder",
