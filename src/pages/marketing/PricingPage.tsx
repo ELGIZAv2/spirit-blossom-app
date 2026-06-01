@@ -683,6 +683,59 @@ const PricingPage = () => {
         </motion.div>
       </section>
 
+      {/* FAQ */}
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="text-center mb-10"
+        >
+          <span className="inline-block text-[11px] font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground mb-4">
+            FAQ
+          </span>
+          <h3
+            className="font-black text-foreground leading-tight"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+          >
+            Frequently asked questions
+          </h3>
+          <p className="mt-3 text-muted-foreground text-base">
+            Everything you need to know before picking a plan.
+          </p>
+        </motion.div>
+
+        <div className="space-y-3">
+          {FAQS.map((item, i) => (
+            <motion.details
+              key={item.q}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              className="group rounded-2xl border border-border bg-card overflow-hidden"
+            >
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 sm:px-6 sm:py-5 hover:bg-muted/40 transition-colors">
+                <span className="font-semibold text-foreground text-sm sm:text-base">
+                  {item.q}
+                </span>
+                <ChevronDown className="w-5 h-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+              </summary>
+              <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-sm text-muted-foreground leading-relaxed">
+                {item.a}
+              </div>
+            </motion.details>
+          ))}
+        </div>
+
+        <p className="mt-10 text-center text-sm text-muted-foreground">
+          Still have questions?{" "}
+          <a href="mailto:support@megsyai.com" className="font-semibold text-foreground hover:underline">
+            support@megsyai.com
+          </a>
+        </p>
+      </section>
 
       {/* Footer */}
       <footer className="border-t border-border bg-background">
