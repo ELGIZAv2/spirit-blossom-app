@@ -196,11 +196,11 @@ const SERVICES_GUIDE: { name: string; desc: string }[] = [
   },
   {
     name: "Megsy OS",
-    desc: "Your autonomous 24/7 agent. Runs tasks, monitors projects, and executes multi-step work in the background. Included on Pro and above.",
+    desc: "Your autonomous 24/7 agent. Runs tasks, monitors projects, and executes multi-step work in the background. Unlimited on all paid plans.",
   },
   {
     name: "Megsy Credits (MC)",
-    desc: "Credits cover video generation and any usage outside your unlimited windows. Unused credits roll over within the billing month.",
+    desc: "Credits cover video generation and any usage outside your unlimited windows. Credits reset at the start of each billing cycle.",
   },
   {
     name: "Team Workspace",
