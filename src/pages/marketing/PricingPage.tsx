@@ -417,6 +417,28 @@ const PricingPage = () => {
           </button>
         </div>
 
+        {/* Compare plans — clean strip at the top */}
+        <motion.button
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          onClick={() => navigate("/features-guide")}
+          className="group mt-7 mx-auto flex items-center gap-3 px-5 py-3 rounded-2xl border border-border bg-card hover:bg-foreground/[0.04] transition-all hover:border-foreground/30 text-left"
+        >
+          <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-foreground text-background shrink-0">
+            <Info className="w-4 h-4" />
+          </span>
+          <span className="flex flex-col items-start">
+            <span className="text-[13px] font-bold text-foreground leading-tight">
+              Compare all plans & features
+            </span>
+            <span className="text-[11px] text-muted-foreground leading-tight mt-0.5">
+              11 services · 4 plans · side-by-side
+            </span>
+          </span>
+          <ArrowLeft className="w-4 h-4 rotate-180 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all shrink-0" />
+        </motion.button>
+
       </section>
 
       {/* Plans grid */}
@@ -444,7 +466,28 @@ const PricingPage = () => {
                   minHeight: 540,
                 }}
               >
-                {/* MOST POPULAR badge moved inside card as label */}
+                {/* MOST POPULAR — floating ribbon at top-right corner of Elite card */}
+                {p.topBadge && (
+                  <div className="absolute -top-3 right-5 z-20 pointer-events-none">
+                    <div
+                      className="relative px-4 py-1.5 rounded-md text-[10px] font-black tracking-[0.22em] text-foreground"
+                      style={{
+                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+                        boxShadow: "0 10px 24px -6px rgba(255,165,0,0.7), 0 0 0 2px rgba(255,255,255,0.15) inset",
+                        animation: "gold-pulse 2.4s ease-in-out infinite",
+                        textShadow: "0 1px 2px rgba(0,0,0,0.15)",
+                      }}
+                    >
+                      ★ MOST POPULAR
+                      {/* notch tail */}
+                      <span
+                        className="absolute -bottom-1.5 right-3 w-3 h-3 rotate-45"
+                        style={{ background: "#FFA500" }}
+                        aria-hidden
+                      />
+                    </div>
+                  </div>
+                )}
 
                 {/* Bubbles (small & subtle, clipped to card) */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[24px]">
@@ -472,21 +515,8 @@ const PricingPage = () => {
 
                 {/* Content */}
                 <div className="relative z-10 p-7 sm:p-8 flex flex-col flex-1">
-                  {/* Label (glass frame) — MOST POPULAR uses gold style for Elite */}
-                  {p.topBadge ? (
-                    <span
-                      className="self-start inline-block text-[10px] sm:text-[11px] font-black tracking-[0.18em] px-3 py-1 rounded-full mb-5"
-                      style={{
-                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
-                        boxShadow: "0 6px 18px -4px rgba(255,165,0,0.55)",
-                        color: "#1a1a1a",
-                        animation: "gold-pulse 2.4s ease-in-out infinite",
-                        textShadow: "0 1px 2px rgba(0,0,0,0.12)",
-                      }}
-                    >
-                      {p.label || "MOST POPULAR"}
-                    </span>
-                  ) : p.label ? (
+                  {/* Label (glass frame) — Elite uses corner ribbon outside, so render placeholder here */}
+                  {!p.topBadge && p.label ? (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 backdrop-blur-md"
                       style={{
@@ -605,81 +635,6 @@ const PricingPage = () => {
             );
           })}
         </div>
-
-        {/* Comparison & services explainer — prominent banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-14 relative overflow-hidden rounded-[28px] border border-border"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%)",
-            boxShadow: "0 30px 80px -30px hsl(var(--foreground) / 0.18)",
-          }}
-        >
-          {/* glow accents */}
-          <div
-            aria-hidden
-            className="absolute -top-24 -left-20 w-72 h-72 rounded-full opacity-40 blur-3xl pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(124,58,237,0.45), transparent 70%)" }}
-          />
-          <div
-            aria-hidden
-            className="absolute -bottom-24 -right-20 w-72 h-72 rounded-full opacity-40 blur-3xl pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(255,165,0,0.45), transparent 70%)" }}
-          />
-
-          <div className="relative z-10 p-8 sm:p-12 flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">
-            <div className="flex-1">
-              <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] px-3 py-1.5 rounded-full bg-foreground/10 border border-border text-foreground mb-5">
-                <Info className="w-3.5 h-3.5" />
-                FULL COMPARISON
-              </span>
-              <h3
-                className="font-black text-foreground leading-tight"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", letterSpacing: "-0.02em" }}
-              >
-                See every feature, side by side.
-              </h3>
-              <p className="mt-4 text-muted-foreground text-base leading-relaxed max-w-xl">
-                A clear, honest breakdown of all 11 services across Free, Pro, Elite and Business — limits, credits, speed, support and team features. No fine print.
-              </p>
-
-              <div className="mt-6 grid grid-cols-3 gap-3 max-w-md">
-                {[
-                  { n: "11", l: "Services" },
-                  { n: "4", l: "Plans" },
-                  { n: "1", l: "Clear table" },
-                ].map((s) => (
-                  <div
-                    key={s.l}
-                    className="rounded-xl bg-background/60 border border-border px-3 py-3 text-center backdrop-blur-sm"
-                  >
-                    <div className="font-black text-foreground text-2xl leading-none">{s.n}</div>
-                    <div className="mt-1 text-[10px] font-bold tracking-[0.18em] uppercase text-muted-foreground">
-                      {s.l}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="shrink-0 flex flex-col items-stretch sm:items-end gap-3">
-              <button
-                onClick={() => navigate("/features-guide")}
-                className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full text-base font-bold bg-foreground text-background hover:opacity-90 transition-all hover:scale-[1.02] shadow-lg"
-              >
-                Compare all plans
-                <ArrowLeft className="w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
-              </button>
-              <p className="text-xs text-muted-foreground text-center sm:text-right">
-                Takes ~30 seconds to read
-              </p>
-            </div>
-          </div>
-        </motion.div>
 
       </section>
 
