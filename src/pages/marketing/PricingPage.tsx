@@ -454,22 +454,7 @@ const PricingPage = () => {
                   minHeight: 540,
                 }}
               >
-                {/* MOST POPULAR badge above Elite */}
-                {p.topBadge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 whitespace-nowrap">
-                    <span
-                      className="inline-block px-6 py-2 text-sm font-black tracking-[0.18em] rounded-full text-foreground"
-                      style={{
-                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
-                        boxShadow: "0 8px 24px -4px rgba(255,165,0,0.6)",
-                        animation: "gold-pulse 2.4s ease-in-out infinite",
-                        textShadow: "0 1px 2px rgba(0,0,0,0.15)",
-                      }}
-                    >
-                      MOST POPULAR
-                    </span>
-                  </div>
-                )}
+                {/* MOST POPULAR badge moved inside card as label */}
 
                 {/* Bubbles (small & subtle, clipped to card) */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[24px]">
