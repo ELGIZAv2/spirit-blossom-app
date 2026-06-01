@@ -454,47 +454,24 @@ const PricingPage = () => {
 
 
                   {/* CTA */}
-                  {p.tier === "starter" && !isYearly ? (
-                    <>
-                      {/* Single Starter CTA — toggles between starting the free
-                          trial and converting it into a paid subscription. */}
-                      <GlowButton
-                        variant="starter"
-                        onClick={() =>
-                          isStarterTrialActive
-                            ? handleSubscribe("starter")
-                            : handleSubscribe("starter", { trial: true })
-                        }
-                        disabled={loadingTier !== null}
-                        className="mt-6 w-full"
-                      >
-                        {loadingTier === "starter" ? (
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                        ) : isStarterTrialActive ? (
-                          "Subscribe Now & End Free Trial"
-                        ) : (
-                          "Start 3-Day Free Trial"
-                        )}
-                      </GlowButton>
-                      <p className="mt-2 text-[11px] leading-snug" style={{ color: p.subText }}>
-                        {isStarterTrialActive
-                          ? "Subscribe now to end your trial and unlock your 70 MC immediately."
-                          : "Card required. No credits during the trial — your 70 MC are granted only when the trial converts to a paid subscription. Cancel anytime."}
-                      </p>
-                    </>
-                  ) : (
-                    <GlowButton
-                      variant={p.tier as "starter" | "pro" | "elite" | "business"}
-                      onClick={() => handleSubscribe(p.tier)}
-                      disabled={loadingTier !== null}
-                      className="mt-6 w-full"
-                    >
-                      {loadingTier === p.tier ? (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      ) : (
-                        `Get ${p.name}`
-                      )}
-                    </GlowButton>
+                  <GlowButton
+                    variant={p.tier as "starter" | "pro" | "elite" | "business"}
+                    onClick={() => handleSubscribe(p.tier)}
+                    disabled={loadingTier !== null}
+                    className="mt-6 w-full"
+                  >
+                    {loadingTier === p.tier ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : p.tier === "starter" ? (
+                      "Get Started Free"
+                    ) : (
+                      `Get ${p.name}`
+                    )}
+                  </GlowButton>
+                  {p.tier === "starter" && (
+                    <p className="mt-2 text-[11px] leading-snug" style={{ color: p.subText }}>
+                      No credit card required. 20 MC every month, forever.
+                    </p>
                   )}
 
 
