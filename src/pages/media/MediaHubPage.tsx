@@ -1269,7 +1269,7 @@ const MediaHubPage = () => {
 
                 {/* Unlimited Models */}
                 <button
-                  onClick={() => navigate("/plans-models")}
+                  onClick={() => navigate("/features-guide")}
                   className="group relative block mt-4 mx-4 md:mx-0 md:mt-0 w-[calc(100%-2rem)] md:w-full aspect-[16/10] md:aspect-[4/3] rounded-2xl md:rounded-3xl overflow-hidden text-left"
                 >
                   <img
