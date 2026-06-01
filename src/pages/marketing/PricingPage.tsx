@@ -127,7 +127,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyPrice: 125,
     yearlyPrice: 1250,
     monthlyCredits: "600 MC / month",
-    yearlyCredits: "$1,250/year — save $250 + 1,200 bonus MC",
+    yearlyCredits: "Save $250 + 1,200 bonus MC",
     features: [
       "Unlimited chat — Megsy AI",
       "Unlimited all month — Images, Slides, Docs, Deep Research & Code Builder",
