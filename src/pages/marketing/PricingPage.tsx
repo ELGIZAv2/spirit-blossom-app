@@ -40,20 +40,19 @@ interface PlanCardConfig {
 const PLANS: PlanCardConfig[] = [
   {
     tier: "starter",
-    name: "Starter",
-    label: "FOR EXPLORERS",
+    name: "Free",
+    label: "START FREE — NO CARD",
     bg: "#D1FAE5",
     text: "#1A1A1A",
     subText: "rgba(26,26,26,0.65)",
-    monthlyPrice: 9,
-    yearlyPrice: 89,
-    monthlyCredits: "70 MC / month",
-    yearlyCredits: "840 MC / year",
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    monthlyCredits: "20 MC / month",
+    yearlyCredits: "20 MC / month",
     features: [
       "Unlimited chat — basic models",
-      "70 credits for images, slides, docs",
+      "20 credits / month (images, slides, docs)",
       "Code builder — credit-based",
-      "Video generation — credit-based",
       "Basic deploy & publish",
       "Community support",
       "Daily usage caps apply",
@@ -70,8 +69,8 @@ const PLANS: PlanCardConfig[] = [
     bg: "#2563EB",
     text: "#FFFFFF",
     subText: "rgba(255,255,255,0.78)",
-    monthlyPrice: 29,
-    yearlyPrice: 299,
+    monthlyPrice: 25,
+    yearlyPrice: 250,
     monthlyCredits: "240 MC / month",
     yearlyCredits: "2,880 MC / year",
     features: [
@@ -98,8 +97,8 @@ const PLANS: PlanCardConfig[] = [
     bg: "#7C3AED",
     text: "#FFFFFF",
     subText: "rgba(255,255,255,0.82)",
-    monthlyPrice: 59,
-    yearlyPrice: 599,
+    monthlyPrice: 50,
+    yearlyPrice: 500,
     monthlyCredits: "500 MC / month",
     yearlyCredits: "6,000 MC / year",
     features: [
@@ -124,8 +123,8 @@ const PLANS: PlanCardConfig[] = [
     bg: "#D97706",
     text: "#FFFFFF",
     subText: "rgba(255,255,255,0.82)",
-    monthlyPrice: 149,
-    yearlyPrice: 1599,
+    monthlyPrice: 125,
+    yearlyPrice: 1250,
     monthlyCredits: "1,200 MC / month",
     yearlyCredits: "14,400 MC / year",
     features: [
@@ -455,47 +454,24 @@ const PricingPage = () => {
 
 
                   {/* CTA */}
-                  {p.tier === "starter" && !isYearly ? (
-                    <>
-                      {/* Single Starter CTA — toggles between starting the free
-                          trial and converting it into a paid subscription. */}
-                      <GlowButton
-                        variant="starter"
-                        onClick={() =>
-                          isStarterTrialActive
-                            ? handleSubscribe("starter")
-                            : handleSubscribe("starter", { trial: true })
-                        }
-                        disabled={loadingTier !== null}
-                        className="mt-6 w-full"
-                      >
-                        {loadingTier === "starter" ? (
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                        ) : isStarterTrialActive ? (
-                          "Subscribe Now & End Free Trial"
-                        ) : (
-                          "Start 3-Day Free Trial"
-                        )}
-                      </GlowButton>
-                      <p className="mt-2 text-[11px] leading-snug" style={{ color: p.subText }}>
-                        {isStarterTrialActive
-                          ? "Subscribe now to end your trial and unlock your 70 MC immediately."
-                          : "Card required. No credits during the trial — your 70 MC are granted only when the trial converts to a paid subscription. Cancel anytime."}
-                      </p>
-                    </>
-                  ) : (
-                    <GlowButton
-                      variant={p.tier as "starter" | "pro" | "elite" | "business"}
-                      onClick={() => handleSubscribe(p.tier)}
-                      disabled={loadingTier !== null}
-                      className="mt-6 w-full"
-                    >
-                      {loadingTier === p.tier ? (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      ) : (
-                        `Get ${p.name}`
-                      )}
-                    </GlowButton>
+                  <GlowButton
+                    variant={p.tier as "starter" | "pro" | "elite" | "business"}
+                    onClick={() => handleSubscribe(p.tier)}
+                    disabled={loadingTier !== null}
+                    className="mt-6 w-full"
+                  >
+                    {loadingTier === p.tier ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : p.tier === "starter" ? (
+                      "Get Started Free"
+                    ) : (
+                      `Get ${p.name}`
+                    )}
+                  </GlowButton>
+                  {p.tier === "starter" && (
+                    <p className="mt-2 text-[11px] leading-snug" style={{ color: p.subText }}>
+                      No credit card required. 20 MC every month, forever.
+                    </p>
                   )}
 
 
