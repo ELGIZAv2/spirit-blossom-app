@@ -137,7 +137,7 @@ const SERVICES: ServiceDetail[] = [
       Free: false,
       Pro: "50 MC included",
       Elite: "120 MC included",
-      Business: "3,50 MC included",
+      Business: "300 MC included",
     },
   },
   {
@@ -173,7 +173,7 @@ const SERVICES: ServiceDetail[] = [
       Free: "0 MC",
       Pro: "50 MC / month",
       Elite: "120 MC / month",
-      Business: "3,50 MC / month",
+      Business: "300 MC / month",
     },
   },
   {
