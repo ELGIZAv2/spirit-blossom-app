@@ -47,8 +47,8 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(26,26,26,0.65)",
     monthlyPrice: 0,
     yearlyPrice: 0,
-    monthlyCredits: "0 credits — pure free tier",
-    yearlyCredits: "0 credits — pure free tier",
+    monthlyCredits: "20 MC / month — forever free",
+    yearlyCredits: "20 MC / month — forever free",
     features: [
       "Unlimited chat — Megsy Lite",
       "Slides: 3 generations / day",
