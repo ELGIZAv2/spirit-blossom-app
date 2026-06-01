@@ -41,7 +41,7 @@ const tabs: Tab[] = [
   {
     title: "Video Creation",
     shortLabel: "Refine & animate",
-    description: "Kling 3.0, Veo 3.1, Runway Gen-4 & Megsy Video — cinematic scenes, camera control, prompt-to-video.",
+    description: "Megsy Video — cinematic scenes with camera control, prompt-to-video, and character consistency built in.",
     bg: "#ff6b5e",
     fg: "#000",
     rotate: -3,
