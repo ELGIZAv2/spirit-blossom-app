@@ -22,7 +22,7 @@ verify_jwt = false
 [functions.pipedream-connect]
 verify_jwt = true
 
-
-
+[functions.admin-hourly-stats]
+verify_jwt = false
 
 
