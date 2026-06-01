@@ -12,7 +12,6 @@ import SEOHead from "@/components/common/SEOHead";
 import MegsyStar from "@/components/branding/MegsyStar";
 import { PaymentMethods } from "@/components/branding/PaymentMethods";
 import { DodoPaymentsBadge } from "@/components/branding/DodoPaymentsBadge";
-import ExclusiveDiscountCard from "@/components/pricing/ExclusiveDiscountCard";
 
 type PlanTier = "starter" | "pro" | "elite" | "business";
 
@@ -73,8 +72,8 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.78)",
     monthlyPrice: 29,
     yearlyPrice: 299,
-    monthlyCredits: "Unlimited usage • no caps",
-    yearlyCredits: "Unlimited yearly • no caps",
+    monthlyCredits: "240 MC / month",
+    yearlyCredits: "2,880 MC / year",
     features: [
       "Unlimited chat — every premium model",
       "Unlimited image generation",
@@ -101,13 +100,12 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.82)",
     monthlyPrice: 59,
     yearlyPrice: 599,
-    monthlyCredits: "Unlimited everything • priority",
-    yearlyCredits: "Unlimited yearly • priority queue",
+    monthlyCredits: "500 MC / month",
+    yearlyCredits: "6,000 MC / year",
     features: [
       "Everything in Pro — unlimited",
       "Priority queue — 3× faster generations",
       "Advanced presets & custom branding",
-      
       "Analytics dashboard",
       "Early access to new models",
       "24/7 priority chat support",
@@ -128,8 +126,8 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.82)",
     monthlyPrice: 149,
     yearlyPrice: 1599,
-    monthlyCredits: "Unlimited everything • dedicated",
-    yearlyCredits: "Unlimited yearly • dedicated infrastructure",
+    monthlyCredits: "1,200 MC / month",
+    yearlyCredits: "14,400 MC / year",
     features: [
       "Everything in Elite — unlimited",
       "Unlimited team seats",
@@ -291,14 +289,6 @@ const PricingPage = () => {
       </div>
 
       {/* Exclusive personal discount card — 50% off + Unlimited */}
-      <div className="px-4 sm:px-6 max-w-7xl mx-auto mt-2 mb-2">
-        <ExclusiveDiscountCard
-          onClaim={() => {
-            const el = document.getElementById("plans-grid");
-            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-        />
-      </div>
 
       <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-14 pb-10 sm:pb-14 text-center">
         <motion.h2
@@ -354,7 +344,6 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 items-stretch">
           {PLANS.map((p, i) => {
             const price = isYearly ? p.yearlyPrice : p.monthlyPrice;
-            const hasPromo = p.tier !== "starter";
             const credits = isYearly ? p.yearlyCredits : p.monthlyCredits;
             const isElite = p.tier === "elite";
 
@@ -457,19 +446,6 @@ const PricingPage = () => {
                     <span className="text-sm font-medium" style={{ color: p.subText }}>
                       /{isYearly ? "year" : "month"}
                     </span>
-                    {hasPromo && (
-                      <>
-                        <span
-                          className="text-lg font-bold line-through opacity-70"
-                          style={{ color: p.subText }}
-                        >
-                          ${price * 2}
-                        </span>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black tracking-wider bg-emerald-500 text-white shadow-sm">
-                          -50%
-                        </span>
-                      </>
-                    )}
                   </div>
 
                   <p className="mt-1 text-sm font-semibold" style={{ color: p.subText }}>
