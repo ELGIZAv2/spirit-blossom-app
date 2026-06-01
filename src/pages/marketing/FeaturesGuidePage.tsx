@@ -350,14 +350,11 @@ const FeaturesGuidePage = () => {
                   transition={{ duration: 0.5, delay: i * 0.04 }}
                   className="rounded-2xl border border-border bg-card p-6 sm:p-8"
                 >
-                  <div className="flex items-start gap-3 mb-3">
-                    <MegsyStar className="w-6 h-6 shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black tracking-tight">{s.name}</h3>
-                      <p className="text-sm text-muted-foreground font-medium mt-1">
-                        {s.tagline}
-                      </p>
-                    </div>
+                  <div className="mb-3">
+                    <h3 className="text-xl sm:text-2xl font-black tracking-tight">{s.name}</h3>
+                    <p className="text-sm text-muted-foreground font-medium mt-1">
+                      {s.tagline}
+                    </p>
                   </div>
                   <p className="text-foreground/80 leading-relaxed mb-5">{s.description}</p>
 
