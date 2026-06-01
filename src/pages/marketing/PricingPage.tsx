@@ -126,8 +126,8 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.82)",
     monthlyPrice: 149,
     yearlyPrice: 1599,
-    monthlyCredits: "Unlimited everything • dedicated",
-    yearlyCredits: "Unlimited yearly • dedicated infrastructure",
+    monthlyCredits: "1,200 MC / month",
+    yearlyCredits: "14,400 MC / year",
     features: [
       "Everything in Elite — unlimited",
       "Unlimited team seats",
