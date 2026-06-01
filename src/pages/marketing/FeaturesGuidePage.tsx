@@ -152,8 +152,8 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: false,
-      Pro: "5 tasks / month",
-      Elite: "20 tasks / month",
+      Pro: "Unlimited tasks",
+      Elite: "Unlimited tasks",
       Business: "Unlimited tasks",
     },
   },
