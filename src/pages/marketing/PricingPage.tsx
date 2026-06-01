@@ -78,8 +78,8 @@ const PLANS: PlanCardConfig[] = [
     features: [
       "Unlimited chat — Megsy AI",
       "Images, Slides, Docs, Deep Research & Code Builder — unlimited 7 days / month",
-      "Video generation — 100 MC included",
       "Megsy OS autonomous tasks — unlimited",
+      "Video generation — 100 MC included",
       "Team workspace included",
       "Priority email support",
     ],
@@ -102,8 +102,8 @@ const PLANS: PlanCardConfig[] = [
     features: [
       "Unlimited chat — Megsy AI",
       "Images, Slides, Docs, Deep Research & Code Builder — unlimited 15 days / month",
-      "Video generation — 250 MC included",
       "Megsy OS autonomous tasks — unlimited",
+      "Video generation — 250 MC included",
       "Priority queue — 3× faster generations",
       "Team workspace included",
       "Advanced presets & custom branding",
@@ -131,10 +131,10 @@ const PLANS: PlanCardConfig[] = [
     features: [
       "Unlimited chat — Megsy AI",
       "Images, Slides, Docs, Deep Research & Code Builder — unlimited all month",
-      "Video generation — 600 MC included",
       "Megsy OS autonomous tasks — unlimited",
-      "Priority queue — 3× faster generations",
       "Unlimited team seats",
+      "Video generation — 600 MC included",
+      "Priority queue — 3× faster generations",
       "Advanced presets & custom branding",
       "Analytics dashboard",
       "SSO & SAML authentication",
