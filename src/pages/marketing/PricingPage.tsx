@@ -47,8 +47,8 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(26,26,26,0.65)",
     monthlyPrice: 0,
     yearlyPrice: 0,
-    monthlyCredits: "0 credits — pure free tier",
-    yearlyCredits: "0 credits — pure free tier",
+    monthlyCredits: "20 MC / month — forever free",
+    yearlyCredits: "20 MC / month — forever free",
     features: [
       "Unlimited chat — Megsy Lite",
       "Slides: 3 generations / day",
@@ -74,7 +74,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyPrice: 25,
     yearlyPrice: 250,
     monthlyCredits: "100 MC / month",
-    yearlyCredits: "1,400 MC / year (2 months bonus)",
+    yearlyCredits: "$250/year — save $50 + 200 bonus MC",
     features: [
       "Unlimited chat — Megsy AI",
       "Unlimited 7 days / month — Images, Slides, Docs, Deep Research & Code Builder",
@@ -98,7 +98,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyPrice: 50,
     yearlyPrice: 500,
     monthlyCredits: "250 MC / month",
-    yearlyCredits: "3,500 MC / year (2 months bonus)",
+    yearlyCredits: "$500/year — save $100 + 500 bonus MC",
     features: [
       "Unlimited chat — Megsy AI",
       "Unlimited 15 days / month — Images, Slides, Docs, Deep Research & Code Builder",
@@ -127,7 +127,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyPrice: 125,
     yearlyPrice: 1250,
     monthlyCredits: "600 MC / month",
-    yearlyCredits: "8,400 MC / year (2 months bonus)",
+    yearlyCredits: "$1,250/year — save $250 + 1,200 bonus MC",
     features: [
       "Unlimited chat — Megsy AI",
       "Unlimited all month — Images, Slides, Docs, Deep Research & Code Builder",
@@ -153,13 +153,13 @@ const BUBBLES = Array.from({ length: 14 });
 
 const ENTERPRISE_FEATURES: string[] = [
   "Custom MC Allocation",
-  "All Models with Priority Speed",
+  "Priority Megsy AI compute lane",
   "Dedicated Infrastructure",
   "SLA Guarantees",
   "Custom API Access & Integrations",
   "Enterprise Security (SOC2-ready, GDPR & Advanced Encryption)",
   "Data Privacy & Compliance",
-  "Early Access to New AI Models",
+  "Early access to new Megsy capabilities",
   "Advanced Analytics & Reporting",
   "Dedicated Account Manager",
   "24/7 Priority Support",
@@ -196,11 +196,11 @@ const SERVICES_GUIDE: { name: string; desc: string }[] = [
   },
   {
     name: "Megsy OS",
-    desc: "Your autonomous 24/7 agent. Runs tasks, monitors projects, and executes multi-step work in the background. Included on Pro and above.",
+    desc: "Your autonomous 24/7 agent. Runs tasks, monitors projects, and executes multi-step work in the background. Unlimited on all paid plans.",
   },
   {
     name: "Megsy Credits (MC)",
-    desc: "Credits cover video generation and any usage outside your unlimited windows. Unused credits roll over within the billing month.",
+    desc: "Credits cover video generation and any usage outside your unlimited windows. Credits reset at the start of each billing cycle.",
   },
   {
     name: "Team Workspace",
@@ -219,19 +219,19 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What happens when I run out of Megsy Credits (MC)?",
-    a: "Your unlimited services (chat, images, slides, docs, code) keep working normally inside your plan's unlimited window. MC are only consumed for video generation and any usage outside that window. You can top up MC anytime or wait for the next renewal.",
+    a: "Chat with Megsy AI is always unlimited and never uses MC. Images, Slides, Docs, Deep Research and Code Builder are unlimited inside your plan's window (7/15/30 days). MC are only consumed for video generation and any usage outside your unlimited window. You can top up MC anytime or wait for the next renewal.",
   },
   {
     q: "What's the difference between the 'unlimited window' and MC?",
-    a: "Each paid plan gives you an unlimited window (7 days for Pro, 15 for Elite, all month for Business) where Images, Slides, Docs, Deep Research and Code Builder have no caps. Video generation is always credit-based and uses your monthly MC balance.",
+    a: "Each paid plan gives you an unlimited window (7 days for Pro, 15 for Elite, all month for Business) where Images, Slides, Docs, Deep Research and Code Builder have no caps. Chat with Megsy AI is unlimited at all times. Video generation is always credit-based and uses your monthly MC balance.",
   },
   {
     q: "Do unused credits roll over?",
-    a: "Unused MC roll over within the same billing month and reset at renewal. Yearly plans get a 2-month credit bonus upfront.",
+    a: "MC reset at the start of each billing cycle and don't roll over. Yearly plans get bonus MC upfront on top of saving 2 months on price.",
   },
   {
     q: "Do you offer refunds?",
-    a: "Yes — we offer a 14-day money-back guarantee on first-time subscriptions, no questions asked. See our Refund Policy in the footer for full details.",
+    a: "See our Refund Policy in the footer for the latest terms and eligibility.",
   },
   {
     q: "Is my payment secure?",
