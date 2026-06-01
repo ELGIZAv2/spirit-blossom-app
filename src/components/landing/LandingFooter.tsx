@@ -114,22 +114,8 @@ const LandingFooter = () => {
             <p className="max-w-xs text-sm leading-relaxed text-white/25">
               The all-in-one AI creative platform. Chat, generate images & videos, create apps, and deploy — all powered by 80+ AI models in one unified interface.
             </p>
-            <div className="mt-6 max-w-xs space-y-1.5 border-l border-white/[0.08] pl-4 text-[11px] leading-relaxed text-white/30">
-              <p className="font-semibold tracking-wide text-white/55">
-                Megsy for Digital Platforms & E-Commerce Development LLC
-              </p>
-              <p className="text-white/30">
-                58 El-Hegaz St., Amoun Tower, Unit 84, Floor 8
-              </p>
-              <p className="text-white/30">
-                Sheraton Al-Matar, Al-Nozha, Cairo, Egypt
-              </p>
-              <p className="pt-1 font-mono text-white/35">
-                CR <span className="text-white/55">248691</span>
-                <span className="mx-2 text-white/20">·</span>
-                Tax <span className="text-white/55">774034785</span>
-              </p>
-              <p className="pt-1">
+            <div className="mt-6 max-w-xs text-[11px] leading-relaxed text-white/30">
+              <p>
                 <a href="mailto:support@megsyai.com" className="text-white/55 hover:text-white">
                   support@megsyai.com
                 </a>
