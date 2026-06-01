@@ -290,14 +290,6 @@ const PricingPage = () => {
       </div>
 
       {/* Exclusive personal discount card — 50% off + Unlimited */}
-      <div className="px-4 sm:px-6 max-w-7xl mx-auto mt-2 mb-2">
-        <ExclusiveDiscountCard
-          onClaim={() => {
-            const el = document.getElementById("plans-grid");
-            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-        />
-      </div>
 
       <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-14 pb-10 sm:pb-14 text-center">
         <motion.h2
