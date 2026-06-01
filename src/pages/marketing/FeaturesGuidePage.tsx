@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight, Sparkles } from "lucide-react";
+import { Check, X, ArrowRight } from "lucide-react";
 import LandingNavbar from "@/components/landing/LandingNavbar";
 import SEOHead from "@/components/common/SEOHead";
 
