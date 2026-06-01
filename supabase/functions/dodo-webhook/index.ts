@@ -182,6 +182,32 @@ Deno.serve(async (req) => {
         },
       } as any);
       if (insErr) console.error("[dodo-webhook] topup insert failed", insErr);
+
+      // ── Referral commission: 20% of every paid USD, forever ──
+      try {
+        const usd = typeof data.total_amount === "number" ? data.total_amount / 100 : 0;
+        if (usd > 0) {
+          const { data: refRow } = await supabase
+            .from("referrals")
+            .select("referrer_id")
+            .eq("referred_id", userId)
+            .maybeSingle();
+          if (refRow?.referrer_id) {
+            const commission = Math.round(usd * 20) / 100; // 20%
+            const { error: earnErr } = await supabase
+              .from("referral_earnings")
+              .insert({
+                referrer_id: refRow.referrer_id,
+                referred_id: userId,
+                amount: commission,
+                source_action: `payment:${tier}:${interval}:${invoiceKey}`,
+              } as any);
+            if (earnErr) console.error("[dodo-webhook] earning insert failed", earnErr);
+          }
+        }
+      } catch (e) {
+        console.error("[dodo-webhook] commission step failed", e);
+      }
     } else if (cancelEvents.has(type)) {
       if (userId) {
         await supabase
