@@ -678,33 +678,6 @@ const PricingPage = () => {
             <PaymentMethods variant="light" />
             <DodoPaymentsBadge variant="light" className="mt-1" />
           </div>
-          <div className="my-10 h-px w-full bg-border/60" />
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-muted-foreground/70">Operating Entity</p>
-            <p className="mt-3 text-base font-semibold tracking-tight text-foreground">
-              Megsy for Digital Platforms & E-Commerce Development LLC
-            </p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              58 El-Hegaz St., Amoun Tower, Unit 84, Floor 8
-            </p>
-            <p className="text-xs text-muted-foreground">
-              Sheraton Al-Matar, Al-Nozha District, Cairo, Arab Republic of Egypt
-            </p>
-            <p className="mt-2 text-xs text-muted-foreground">
-              <a href="mailto:support@megsyai.com" className="hover:text-foreground">support@megsyai.com</a>
-            </p>
-            <div className="mt-4 inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-full border border-border/60 bg-muted/30 px-5 py-2 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5">
-                <span className="text-muted-foreground/60">CR</span>
-                <span className="font-mono font-semibold text-foreground/90">248691</span>
-              </span>
-              <span className="h-1 w-1 rounded-full bg-muted-foreground/40" aria-hidden />
-              <span className="inline-flex items-center gap-1.5">
-                <span className="text-muted-foreground/60">Tax ID</span>
-                <span className="font-mono font-semibold text-foreground/90">774034785</span>
-              </span>
-            </div>
-          </div>
 
           <div className="my-10 h-px w-full bg-border/60" />
 
