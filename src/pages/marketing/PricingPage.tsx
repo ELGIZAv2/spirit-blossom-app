@@ -575,34 +575,46 @@ const PricingPage = () => {
 
 
                   {/* Features */}
-                  <ul className="mt-6 space-y-2 flex-1">
-                    {p.features.map((f) => {
+                  <ul className="mt-6 flex-1 flex flex-col">
+                    {p.features.map((f, idx) => {
                       const isUnlimited = /unlimited/i.test(f);
+                      const isStarter = p.tier === "starter";
+                      const dividerColor = isStarter
+                        ? "rgba(0,0,0,0.08)"
+                        : "rgba(255,255,255,0.14)";
                       return (
                         <li
                           key={f}
-                          className={`flex items-start gap-2.5 text-sm rounded-lg transition-colors ${
-                            isUnlimited ? "px-2.5 py-1.5 -mx-1" : ""
-                          }`}
+                          className="flex items-start gap-3 text-[13.5px] leading-snug py-3"
                           style={{
                             color: isUnlimited ? p.text : p.subText,
-                            background: isUnlimited
-                              ? (p.tier === "starter"
-                                  ? "linear-gradient(90deg, rgba(16,185,129,0.18), rgba(16,185,129,0.04))"
-                                  : "linear-gradient(90deg, rgba(255,215,0,0.22), rgba(255,215,0,0.04))")
-                              : undefined,
-                            border: isUnlimited
-                              ? (p.tier === "starter"
-                                  ? "1px solid rgba(16,185,129,0.35)"
-                                  : "1px solid rgba(255,215,0,0.45)")
-                              : undefined,
-                            fontWeight: isUnlimited ? 700 : undefined,
+                            fontWeight: isUnlimited ? 700 : 500,
+                            borderTop: idx === 0 ? "none" : `1px solid ${dividerColor}`,
                           }}
                         >
-                          {isUnlimited && p.tier !== "starter" && (
-                            <MegsyStar className="w-4 h-4 shrink-0 mt-0.5" />
-                          )}
-                          <span>{f}</span>
+                          <span
+                            className="shrink-0 mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full"
+                            style={{
+                              background: isUnlimited
+                                ? (isStarter
+                                    ? "rgba(16,185,129,0.18)"
+                                    : "rgba(255,215,0,0.22)")
+                                : (isStarter
+                                    ? "rgba(0,0,0,0.06)"
+                                    : "rgba(255,255,255,0.14)"),
+                            }}
+                          >
+                            {isUnlimited && !isStarter ? (
+                              <MegsyStar className="w-3.5 h-3.5" />
+                            ) : (
+                              <Check
+                                className="w-3 h-3"
+                                style={{ color: isUnlimited && isStarter ? "#059669" : p.text }}
+                                strokeWidth={3}
+                              />
+                            )}
+                          </span>
+                          <span className="flex-1">{f}</span>
                         </li>
                       );
                     })}
