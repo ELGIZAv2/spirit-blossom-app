@@ -153,13 +153,13 @@ const BUBBLES = Array.from({ length: 14 });
 
 const ENTERPRISE_FEATURES: string[] = [
   "Custom MC Allocation",
-  "All Models with Priority Speed",
+  "Priority Megsy AI compute lane",
   "Dedicated Infrastructure",
   "SLA Guarantees",
   "Custom API Access & Integrations",
   "Enterprise Security (SOC2-ready, GDPR & Advanced Encryption)",
   "Data Privacy & Compliance",
-  "Early Access to New AI Models",
+  "Early access to new Megsy capabilities",
   "Advanced Analytics & Reporting",
   "Dedicated Account Manager",
   "24/7 Priority Support",
