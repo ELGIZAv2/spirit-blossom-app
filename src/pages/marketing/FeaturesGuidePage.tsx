@@ -43,10 +43,10 @@ const SERVICES: ServiceDetail[] = [
       "Free plan uses Megsy Lite",
     ],
     values: {
-      Free: "Basic models — unlimited",
-      Pro: "All premium models — unlimited",
-      Elite: "All premium models — unlimited",
-      Business: "All premium models — unlimited",
+      Free: "Megsy Lite — unlimited",
+      Pro: "Megsy AI — unlimited",
+      Elite: "Megsy AI — unlimited",
+      Business: "Megsy AI — unlimited",
     },
   },
   {
