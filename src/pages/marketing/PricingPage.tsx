@@ -100,13 +100,12 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.82)",
     monthlyPrice: 59,
     yearlyPrice: 599,
-    monthlyCredits: "Unlimited everything • priority",
-    yearlyCredits: "Unlimited yearly • priority queue",
+    monthlyCredits: "500 MC / month",
+    yearlyCredits: "6,000 MC / year",
     features: [
       "Everything in Pro — unlimited",
       "Priority queue — 3× faster generations",
       "Advanced presets & custom branding",
-      
       "Analytics dashboard",
       "Early access to new models",
       "24/7 priority chat support",
