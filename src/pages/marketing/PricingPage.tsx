@@ -692,9 +692,6 @@ const PricingPage = () => {
           transition={{ duration: 0.55 }}
           className="text-center mb-10"
         >
-          <span className="inline-block text-[11px] font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground mb-4">
-            FAQ
-          </span>
           <h3
             className="font-black text-foreground leading-tight"
             style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
