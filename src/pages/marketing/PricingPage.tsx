@@ -482,8 +482,21 @@ const PricingPage = () => {
 
                 {/* Content */}
                 <div className="relative z-10 p-7 sm:p-8 flex flex-col flex-1">
-                  {/* Label (glass frame) */}
-                  {!p.topBadge && p.label && (
+                  {/* Label (glass frame) — MOST POPULAR uses gold style for Elite */}
+                  {p.topBadge ? (
+                    <span
+                      className="self-start inline-block text-[10px] sm:text-[11px] font-black tracking-[0.18em] px-3 py-1 rounded-full mb-5"
+                      style={{
+                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+                        boxShadow: "0 6px 18px -4px rgba(255,165,0,0.55)",
+                        color: "#1a1a1a",
+                        animation: "gold-pulse 2.4s ease-in-out infinite",
+                        textShadow: "0 1px 2px rgba(0,0,0,0.12)",
+                      }}
+                    >
+                      {p.label || "MOST POPULAR"}
+                    </span>
+                  ) : p.label ? (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 backdrop-blur-md"
                       style={{
@@ -494,8 +507,7 @@ const PricingPage = () => {
                     >
                       {p.label}
                     </span>
-                  )}
-                  {(p.topBadge || !p.label) && (
+                  ) : (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 opacity-0 pointer-events-none"
                       aria-hidden="true"
@@ -504,28 +516,36 @@ const PricingPage = () => {
                     </span>
                   )}
 
-                  <h3
-                    className="font-black"
-                    style={{ fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)" }}
-                  >
-                    {p.name}
-                  </h3>
-
-                  <div className="mt-3 flex items-baseline gap-2 flex-wrap">
-                    <span
+                  {/* Plan name + price + credits — tidy grouped block */}
+                  <div className="flex flex-col gap-1.5">
+                    <h3
                       className="font-black leading-none"
-                      style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}
+                      style={{ fontSize: "clamp(1.25rem, 2vw, 1.5rem)", color: p.text }}
                     >
-                      ${price}
-                    </span>
-                    <span className="text-sm font-medium" style={{ color: p.subText }}>
-                      /{isYearly ? "year" : "month"}
+                      {p.name}
+                    </h3>
+                    <div className="flex items-baseline gap-1.5">
+                      <span
+                        className="font-black leading-none"
+                        style={{ fontSize: "clamp(2.25rem, 4.5vw, 3rem)" }}
+                      >
+                        ${price}
+                      </span>
+                      <span className="text-sm font-semibold" style={{ color: p.subText }}>
+                        /{isYearly ? "year" : "month"}
+                      </span>
+                    </div>
+                    <span
+                      className="self-start inline-block text-[11px] font-bold tracking-wide px-2.5 py-1 rounded-full mt-1"
+                      style={{
+                        background: p.tier === "starter" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.16)",
+                        color: p.text,
+                      }}
+                    >
+                      {credits}
                     </span>
                   </div>
 
-                  <p className="mt-1 text-sm font-semibold" style={{ color: p.subText }}>
-                    {credits}
-                  </p>
 
 
 
