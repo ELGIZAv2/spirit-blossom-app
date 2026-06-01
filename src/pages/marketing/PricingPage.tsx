@@ -77,10 +77,7 @@ const PLANS: PlanCardConfig[] = [
     yearlyCredits: "1,400 MC / year (2 months bonus)",
     features: [
       "Unlimited chat — every premium model",
-      "Images: unlimited 7 days at the start of each month",
-      "Slides & presentations: unlimited 7 days / month",
-      "Docs & Deep Research: unlimited 7 days / month",
-      "Code Builder: unlimited 7 days / month",
+      "Unlimited 7 days / month — Images, Slides, Docs, Deep Research & Code Builder",
       "Video generation — 100 MC included",
       "Megsy OS — unlimited autonomous tasks",
       "Team workspace included",
