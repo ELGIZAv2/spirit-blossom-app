@@ -128,10 +128,7 @@ const PLANS: PlanCardConfig[] = [
     yearlyCredits: "8,400 MC / year (2 months bonus)",
     features: [
       "Everything in Elite, plus:",
-      "Images: unlimited all month (30 days)",
-      "Slides & presentations: unlimited all month",
-      "Docs & Deep Research: unlimited all month",
-      "Code Builder: unlimited all month",
+      "Unlimited all month — Images, Slides, Docs, Deep Research & Code Builder",
       "Video generation — 600 MC included",
       "Unlimited team seats",
       "SSO & SAML authentication",
