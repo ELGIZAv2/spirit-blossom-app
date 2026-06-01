@@ -417,16 +417,16 @@ const PricingPage = () => {
           </button>
         </div>
 
-        {/* Compare plans — simple text link */}
+        {/* Compare plans — pill link */}
         <motion.button
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           onClick={() => navigate("/features-guide")}
-          className="group mt-6 mx-auto inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
+          className="group mt-7 mx-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card hover:bg-foreground/[0.04] hover:border-foreground/30 transition-all text-sm font-semibold text-foreground"
         >
           Want to know more about Megsy's services?
-          <span className="text-foreground group-hover:translate-x-0.5 transition-transform">→</span>
+          <span className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all">→</span>
         </motion.button>
 
       </section>
@@ -456,25 +456,16 @@ const PricingPage = () => {
                   minHeight: 540,
                 }}
               >
-                {/* MOST POPULAR — floating ribbon at top-right corner of Elite card */}
+                {/* MOST POPULAR — clean centered tab above the card */}
                 {p.topBadge && (
-                  <div className="absolute -top-3 right-5 z-20 pointer-events-none">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
                     <div
-                      className="relative px-4 py-1.5 rounded-md text-[10px] font-black tracking-[0.22em] text-foreground"
+                      className="px-4 py-1.5 rounded-full text-[10px] font-black tracking-[0.24em] text-foreground bg-background border border-foreground/20"
                       style={{
-                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
-                        boxShadow: "0 10px 24px -6px rgba(255,165,0,0.7), 0 0 0 2px rgba(255,255,255,0.15) inset",
-                        animation: "gold-pulse 2.4s ease-in-out infinite",
-                        textShadow: "0 1px 2px rgba(0,0,0,0.15)",
+                        boxShadow: "0 8px 24px -8px rgba(0,0,0,0.25)",
                       }}
                     >
-                      ★ MOST POPULAR
-                      {/* notch tail */}
-                      <span
-                        className="absolute -bottom-1.5 right-3 w-3 h-3 rotate-45"
-                        style={{ background: "#FFA500" }}
-                        aria-hidden
-                      />
+                      MOST POPULAR
                     </div>
                   </div>
                 )}
