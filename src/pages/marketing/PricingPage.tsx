@@ -402,6 +402,17 @@ const PricingPage = () => {
             Yearly
           </button>
         </div>
+
+        {/* Single explainer CTA — opens full features-guide page */}
+        <div className="mt-6 flex justify-center">
+          <button
+            onClick={() => navigate("/features-guide")}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-foreground/5 hover:bg-foreground/10 border border-border text-foreground transition-colors"
+          >
+            <Info className="w-4 h-4" />
+            Compare plans & see what each feature does
+          </button>
+        </div>
       </section>
 
       {/* Plans grid */}
