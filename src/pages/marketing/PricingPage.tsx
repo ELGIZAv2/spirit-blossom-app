@@ -417,6 +417,28 @@ const PricingPage = () => {
           </button>
         </div>
 
+        {/* Compare plans — clean strip at the top */}
+        <motion.button
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          onClick={() => navigate("/features-guide")}
+          className="group mt-7 mx-auto flex items-center gap-3 px-5 py-3 rounded-2xl border border-border bg-card hover:bg-foreground/[0.04] transition-all hover:border-foreground/30 text-left"
+        >
+          <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-foreground text-background shrink-0">
+            <Info className="w-4 h-4" />
+          </span>
+          <span className="flex flex-col items-start">
+            <span className="text-[13px] font-bold text-foreground leading-tight">
+              Compare all plans & features
+            </span>
+            <span className="text-[11px] text-muted-foreground leading-tight mt-0.5">
+              11 services · 4 plans · side-by-side
+            </span>
+          </span>
+          <ArrowLeft className="w-4 h-4 rotate-180 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all shrink-0" />
+        </motion.button>
+
       </section>
 
       {/* Plans grid */}
