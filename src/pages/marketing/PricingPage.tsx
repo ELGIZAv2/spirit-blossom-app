@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, Loader2 } from "lucide-react";
+import { ArrowLeft, Check, Loader2, Info } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -71,18 +79,19 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.78)",
     monthlyPrice: 25,
     yearlyPrice: 250,
-    monthlyCredits: "200 MC / month",
-    yearlyCredits: "2,400 MC / year",
+    monthlyCredits: "500 MC / month",
+    yearlyCredits: "6,000 MC / year",
     features: [
       "Unlimited chat — every premium model",
       "Images: unlimited for 7 days / month",
       "Slides & presentations: unlimited 7 days",
       "Docs & Deep Research: unlimited 7 days",
       "Code builder: unlimited 7 days",
-      "Video generation: 3 days unlimited / month",
-      "200 MC for any extra usage",
+      "Video generation — credit-based",
+      "500 MC for video & extra usage",
       "Megsy OS — autonomous 24/7 agent",
       "Team workspace included",
+      "Standard deploy & publish",
       "Priority email support",
     ],
     ctaBg: "#FFFFFF",
@@ -99,15 +108,18 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.82)",
     monthlyPrice: 50,
     yearlyPrice: 500,
-    monthlyCredits: "150 MC / month",
-    yearlyCredits: "1,800 MC / year",
+    monthlyCredits: "1,200 MC / month",
+    yearlyCredits: "14,400 MC / year",
     features: [
       "Everything in Pro, plus:",
+      "Unlimited chat — every premium model",
       "Images: unlimited for 15 days / month",
-      "Slides, Docs & Deep Research: 15 days unlimited",
-      "Code builder: 15 days unlimited",
-      "Video generation: 7 days unlimited / month",
-      "150 MC for any extra usage",
+      "Slides & presentations: unlimited 15 days",
+      "Docs & Deep Research: unlimited 15 days",
+      "Code builder: unlimited 15 days",
+      "Video generation — credit-based",
+      "1,200 MC for video & extra usage",
+      "Megsy OS — autonomous 24/7 agent",
       "Priority queue — 3× faster generations",
       "Advanced presets & custom branding",
       "Analytics dashboard",
@@ -129,15 +141,21 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.82)",
     monthlyPrice: 125,
     yearlyPrice: 1250,
-    monthlyCredits: "100 MC / month",
-    yearlyCredits: "1,200 MC / year",
+    monthlyCredits: "3,500 MC / month",
+    yearlyCredits: "42,000 MC / year",
     features: [
       "Everything in Elite, plus:",
-      "Images, Slides, Docs & Code: unlimited all month (30 days)",
-      "Video generation: 15 days unlimited / month",
-      "100 MC for any extra usage",
+      "Unlimited chat — every premium model",
+      "Images: unlimited all month (30 days)",
+      "Slides & presentations: unlimited 30 days",
+      "Docs & Deep Research: unlimited 30 days",
+      "Code builder: unlimited 30 days",
+      "Video generation — credit-based",
+      "3,500 MC for video & extra usage",
+      "Megsy OS — autonomous 24/7 agent",
       "Unlimited team seats",
-      "Dedicated infrastructure & SSO/SAML",
+      "Dedicated infrastructure",
+      "SSO & SAML authentication",
       "99.9% SLA guarantee",
       "White-glove onboarding & success manager",
     ],
@@ -167,6 +185,50 @@ const ENTERPRISE_FEATURES: string[] = [
   "Volume Discounts",
   "Custom Contract, Invoicing & Billing",
 ];
+
+const SERVICES_GUIDE: { name: string; desc: string }[] = [
+  {
+    name: "Unlimited Chat",
+    desc: "Talk to every premium AI model (GPT, Claude, Gemini, and more) with no daily caps. Free plan uses basic models only.",
+  },
+  {
+    name: "Image Generation",
+    desc: "Generate unlimited high-quality images during your unlimited window (7/15/30 days depending on plan). Outside the window, uses MC credits.",
+  },
+  {
+    name: "Slides & Presentations",
+    desc: "Create complete slide decks from a prompt — fully editable, exportable to PPT/PDF. Free plan: 3 / day.",
+  },
+  {
+    name: "Docs & Deep Research",
+    desc: "Long-form documents and multi-source research reports with citations. Free plan: 3 of each per day.",
+  },
+  {
+    name: "Code Builder",
+    desc: "Build full apps and websites in natural language, with one-click deploy. Unlimited during your plan window.",
+  },
+  {
+    name: "Video Generation",
+    desc: "Credit-based on all plans. Each video consumes MC from your monthly balance — never charged extra.",
+  },
+  {
+    name: "Megsy OS",
+    desc: "Your autonomous 24/7 agent. Runs tasks, monitors projects, and executes multi-step work in the background. Included on Pro and above.",
+  },
+  {
+    name: "Megsy Credits (MC)",
+    desc: "Credits cover video generation and any usage outside your unlimited windows. Unused credits roll over within the billing month.",
+  },
+  {
+    name: "Team Workspace",
+    desc: "Shared projects, files, and chats for your team. Pro+ includes seats; Business is unlimited.",
+  },
+  {
+    name: "Priority Queue",
+    desc: "Elite & Business get 3× faster generation speeds and skip the standard queue.",
+  },
+];
+
 
 
 const PricingPage = () => {
@@ -487,8 +549,50 @@ const PricingPage = () => {
 
 
 
+                  {/* Features header + explainer */}
+                  <div className="mt-6 mb-2 flex items-center justify-between gap-2">
+                    <span
+                      className="text-[11px] font-bold tracking-[0.15em] uppercase"
+                      style={{ color: p.subText }}
+                    >
+                      What's included
+                    </span>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button
+                          type="button"
+                          className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full transition-opacity hover:opacity-80"
+                          style={{
+                            color: p.text,
+                            background: p.tier === "starter" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.18)",
+                            border: p.tier === "starter" ? "1px solid rgba(0,0,0,0.15)" : "1px solid rgba(255,255,255,0.35)",
+                          }}
+                        >
+                          <Info className="w-3 h-3" />
+                          What does each feature do?
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle>What's included in your plan</DialogTitle>
+                          <DialogDescription>
+                            A clear breakdown of every Megsy service so you know exactly what you're paying for.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="mt-4 space-y-4">
+                          {SERVICES_GUIDE.map((s) => (
+                            <div key={s.name} className="border-b border-border/50 pb-3 last:border-0">
+                              <h4 className="font-bold text-foreground">{s.name}</h4>
+                              <p className="text-sm text-muted-foreground mt-1">{s.desc}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+
                   {/* Features */}
-                  <ul className="mt-6 space-y-2 flex-1">
+                  <ul className="space-y-2 flex-1">
                     {p.features.map((f) => {
                       const isUnlimited = /unlimited/i.test(f);
                       return (
