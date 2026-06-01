@@ -35,12 +35,12 @@ const SERVICES: ServiceDetail[] = [
     name: "AI Chat",
     tagline: "Talk to every premium model in one place",
     description:
-      "Chat with GPT-4, Claude, Gemini, and other premium models from a single interface. Switch models mid-conversation, keep your full history, and never get rate-limited on paid plans.",
+      "Chat with Megsy AI — our own model built for fast, accurate, multi-turn conversations. Keep your full history, switch reasoning modes, and never get rate-limited on paid plans.",
     highlights: [
-      "Access to 10+ premium AI models",
+      "Powered by Megsy's proprietary model",
       "Persistent conversation history",
-      "Switch models without losing context",
-      "Free plan uses basic models only",
+      "Multi-turn context with no resets",
+      "Free plan uses Megsy Lite",
     ],
     values: {
       Free: "Basic models — unlimited",
