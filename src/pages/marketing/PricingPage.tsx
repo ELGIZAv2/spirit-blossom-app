@@ -344,7 +344,6 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 items-stretch">
           {PLANS.map((p, i) => {
             const price = isYearly ? p.yearlyPrice : p.monthlyPrice;
-            const hasPromo = p.tier !== "starter";
             const credits = isYearly ? p.yearlyCredits : p.monthlyCredits;
             const isElite = p.tier === "elite";
 
@@ -447,19 +446,6 @@ const PricingPage = () => {
                     <span className="text-sm font-medium" style={{ color: p.subText }}>
                       /{isYearly ? "year" : "month"}
                     </span>
-                    {hasPromo && (
-                      <>
-                        <span
-                          className="text-lg font-bold line-through opacity-70"
-                          style={{ color: p.subText }}
-                        >
-                          ${price * 2}
-                        </span>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-black tracking-wider bg-emerald-500 text-white shadow-sm">
-                          -50%
-                        </span>
-                      </>
-                    )}
                   </div>
 
                   <p className="mt-1 text-sm font-semibold" style={{ color: p.subText }}>
