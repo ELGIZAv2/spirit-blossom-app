@@ -212,6 +212,37 @@ const SERVICES_GUIDE: { name: string; desc: string }[] = [
   },
 ];
 
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "Can I change or cancel my plan anytime?",
+    a: "Yes. You can upgrade, downgrade, or cancel at any time from your billing settings. Upgrades take effect immediately; downgrades take effect at the end of the current billing cycle.",
+  },
+  {
+    q: "What happens when I run out of Megsy Credits (MC)?",
+    a: "Your unlimited services (chat, images, slides, docs, code) keep working normally inside your plan's unlimited window. MC are only consumed for video generation and any usage outside that window. You can top up MC anytime or wait for the next renewal.",
+  },
+  {
+    q: "What's the difference between the 'unlimited window' and MC?",
+    a: "Each paid plan gives you an unlimited window (7 days for Pro, 15 for Elite, all month for Business) where Images, Slides, Docs, Deep Research and Code Builder have no caps. Video generation is always credit-based and uses your monthly MC balance.",
+  },
+  {
+    q: "Do unused credits roll over?",
+    a: "Unused MC roll over within the same billing month and reset at renewal. Yearly plans get a 2-month credit bonus upfront.",
+  },
+  {
+    q: "Do you offer refunds?",
+    a: "Yes — we offer a 14-day money-back guarantee on first-time subscriptions, no questions asked. See our Refund Policy in the footer for full details.",
+  },
+  {
+    q: "Is my payment secure?",
+    a: "All payments are processed by Dodo Payments with bank-grade encryption. We never store your card details on our servers.",
+  },
+  {
+    q: "Do you offer team or enterprise plans?",
+    a: "Yes. Business includes unlimited team seats. For custom MC allocation, SSO, SLA guarantees, or dedicated infrastructure, contact our sales team via the Enterprise card above.",
+  },
+];
+
 
 
 const PricingPage = () => {
