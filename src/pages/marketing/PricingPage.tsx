@@ -498,7 +498,7 @@ const PricingPage = () => {
                 {/* Content */}
                 <div className="relative z-10 p-7 sm:p-8 flex flex-col flex-1">
                   {/* Label (glass frame) */}
-                  {!p.topBadge && (
+                  {!p.topBadge && p.label && (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 backdrop-blur-md"
                       style={{
@@ -510,7 +510,7 @@ const PricingPage = () => {
                       {p.label}
                     </span>
                   )}
-                  {p.topBadge && (
+                  {(p.topBadge || !p.label) && (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 opacity-0 pointer-events-none"
                       aria-hidden="true"
