@@ -592,18 +592,7 @@ const PricingPage = () => {
                             borderTop: idx === 0 ? "none" : `1px solid ${dividerColor}`,
                           }}
                         >
-                          <span
-                            className="shrink-0 mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full"
-                            style={{
-                              background: isUnlimited
-                                ? (isStarter
-                                    ? "rgba(16,185,129,0.18)"
-                                    : "rgba(255,215,0,0.22)")
-                                : (isStarter
-                                    ? "rgba(0,0,0,0.06)"
-                                    : "rgba(255,255,255,0.14)"),
-                            }}
-                          >
+                          <span className="shrink-0 mt-0.5 inline-flex items-center justify-center">
                             {isUnlimited && !isStarter ? (
                               <MegsyStar className="w-3.5 h-3.5" />
                             ) : (
