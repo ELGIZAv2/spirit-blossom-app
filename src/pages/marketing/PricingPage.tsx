@@ -41,7 +41,7 @@ const PLANS: PlanCardConfig[] = [
   {
     tier: "starter",
     name: "Free",
-    label: "START FREE — NO CARD",
+    label: "",
     bg: "#D1FAE5",
     text: "#1A1A1A",
     subText: "rgba(26,26,26,0.65)",
