@@ -219,19 +219,19 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What happens when I run out of Megsy Credits (MC)?",
-    a: "Your unlimited services (chat, images, slides, docs, code) keep working normally inside your plan's unlimited window. MC are only consumed for video generation and any usage outside that window. You can top up MC anytime or wait for the next renewal.",
+    a: "Chat with Megsy AI is always unlimited and never uses MC. Images, Slides, Docs, Deep Research and Code Builder are unlimited inside your plan's window (7/15/30 days). MC are only consumed for video generation and any usage outside your unlimited window. You can top up MC anytime or wait for the next renewal.",
   },
   {
     q: "What's the difference between the 'unlimited window' and MC?",
-    a: "Each paid plan gives you an unlimited window (7 days for Pro, 15 for Elite, all month for Business) where Images, Slides, Docs, Deep Research and Code Builder have no caps. Video generation is always credit-based and uses your monthly MC balance.",
+    a: "Each paid plan gives you an unlimited window (7 days for Pro, 15 for Elite, all month for Business) where Images, Slides, Docs, Deep Research and Code Builder have no caps. Chat with Megsy AI is unlimited at all times. Video generation is always credit-based and uses your monthly MC balance.",
   },
   {
     q: "Do unused credits roll over?",
-    a: "Unused MC roll over within the same billing month and reset at renewal. Yearly plans get a 2-month credit bonus upfront.",
+    a: "MC reset at the start of each billing cycle and don't roll over. Yearly plans get bonus MC upfront on top of saving 2 months on price.",
   },
   {
     q: "Do you offer refunds?",
-    a: "Yes — we offer a 14-day money-back guarantee on first-time subscriptions, no questions asked. See our Refund Policy in the footer for full details.",
+    a: "See our Refund Policy in the footer for the latest terms and eligibility.",
   },
   {
     q: "Is my payment secure?",
