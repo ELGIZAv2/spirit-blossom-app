@@ -552,50 +552,8 @@ const PricingPage = () => {
 
 
 
-                  {/* Features header + explainer */}
-                  <div className="mt-6 mb-2 flex items-center justify-between gap-2">
-                    <span
-                      className="text-[11px] font-bold tracking-[0.15em] uppercase"
-                      style={{ color: p.subText }}
-                    >
-                      What's included
-                    </span>
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <button
-                          type="button"
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full transition-opacity hover:opacity-80"
-                          style={{
-                            color: p.text,
-                            background: p.tier === "starter" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.18)",
-                            border: p.tier === "starter" ? "1px solid rgba(0,0,0,0.15)" : "1px solid rgba(255,255,255,0.35)",
-                          }}
-                        >
-                          <Info className="w-3 h-3" />
-                          What does each feature do?
-                        </button>
-                      </DialogTrigger>
-                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-                        <DialogHeader>
-                          <DialogTitle>What's included in your plan</DialogTitle>
-                          <DialogDescription>
-                            A clear breakdown of every Megsy service so you know exactly what you're paying for.
-                          </DialogDescription>
-                        </DialogHeader>
-                        <div className="mt-4 space-y-4">
-                          {SERVICES_GUIDE.map((s) => (
-                            <div key={s.name} className="border-b border-border/50 pb-3 last:border-0">
-                              <h4 className="font-bold text-foreground">{s.name}</h4>
-                              <p className="text-sm text-muted-foreground mt-1">{s.desc}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
-
                   {/* Features */}
-                  <ul className="space-y-2 flex-1">
+                  <ul className="mt-6 space-y-2 flex-1">
                     {p.features.map((f) => {
                       const isUnlimited = /unlimited/i.test(f);
                       return (
