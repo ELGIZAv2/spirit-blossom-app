@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Check, X, ArrowRight, Sparkles } from "lucide-react";
 import LandingNavbar from "@/components/landing/LandingNavbar";
 import SEOHead from "@/components/common/SEOHead";
-import MegsyStar from "@/components/branding/MegsyStar";
 
 const LandingFooter = lazy(() => import("@/components/landing/LandingFooter"));
 
@@ -63,8 +62,8 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: false,
-      Pro: "Unlimited for 7 days / month",
-      Elite: "Unlimited for 15 days / month",
+      Pro: "Unlimited for 7 days at the start of each month",
+      Elite: "Unlimited for 15 days at the start of each month",
       Business: "Unlimited all month (30 days)",
     },
   },
@@ -81,8 +80,8 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: "3 / day",
-      Pro: "Unlimited for 7 days / month",
-      Elite: "Unlimited for 15 days / month",
+      Pro: "Unlimited for 7 days at the start of each month",
+      Elite: "Unlimited for 15 days at the start of each month",
       Business: "Unlimited all month",
     },
   },
@@ -99,8 +98,8 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: "3 / day each",
-      Pro: "Unlimited for 7 days / month",
-      Elite: "Unlimited for 15 days / month",
+      Pro: "Unlimited for 7 days at the start of each month",
+      Elite: "Unlimited for 15 days at the start of each month",
       Business: "Unlimited all month",
     },
   },
@@ -117,8 +116,8 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: false,
-      Pro: "Unlimited for 7 days / month",
-      Elite: "Unlimited for 15 days / month",
+      Pro: "Unlimited for 7 days at the start of each month",
+      Elite: "Unlimited for 15 days at the start of each month",
       Business: "Unlimited all month",
     },
   },
@@ -135,9 +134,9 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: false,
-      Pro: "50 MC included",
-      Elite: "120 MC included",
-      Business: "300 MC included",
+      Pro: "100 MC included",
+      Elite: "250 MC included",
+      Business: "600 MC included",
     },
   },
   {
@@ -171,9 +170,9 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: "0 MC",
-      Pro: "50 MC / month",
-      Elite: "120 MC / month",
-      Business: "300 MC / month",
+      Pro: "100 MC / month",
+      Elite: "250 MC / month",
+      Business: "600 MC / month",
     },
   },
   {
@@ -351,14 +350,11 @@ const FeaturesGuidePage = () => {
                   transition={{ duration: 0.5, delay: i * 0.04 }}
                   className="rounded-2xl border border-border bg-card p-6 sm:p-8"
                 >
-                  <div className="flex items-start gap-3 mb-3">
-                    <MegsyStar className="w-6 h-6 shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-black tracking-tight">{s.name}</h3>
-                      <p className="text-sm text-muted-foreground font-medium mt-1">
-                        {s.tagline}
-                      </p>
-                    </div>
+                  <div className="mb-3">
+                    <h3 className="text-xl sm:text-2xl font-black tracking-tight">{s.name}</h3>
+                    <p className="text-sm text-muted-foreground font-medium mt-1">
+                      {s.tagline}
+                    </p>
                   </div>
                   <p className="text-foreground/80 leading-relaxed mb-5">{s.description}</p>
 
