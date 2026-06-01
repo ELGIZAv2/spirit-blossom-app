@@ -255,7 +255,7 @@ const renderCell = (value: string | boolean) => {
 };
 
 const MediaBlock = ({ media }: { media: Media }) => (
-  <div className="relative overflow-hidden rounded-3xl border border-border bg-card aspect-[16/10] shadow-[0_30px_80px_-30px_hsl(var(--foreground)/0.25)]">
+  <div className="relative overflow-hidden rounded-[28px] border border-border bg-card aspect-[4/3] sm:aspect-[16/10] shadow-[0_40px_100px_-40px_hsl(var(--foreground)/0.35)]">
     {media.kind === "image" ? (
       <img
         src={media.src}
@@ -274,6 +274,10 @@ const MediaBlock = ({ media }: { media: Media }) => (
         className="absolute inset-0 w-full h-full object-cover"
       />
     )}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-foreground/5 rounded-[28px]"
+    />
   </div>
 );
 
@@ -290,154 +294,128 @@ const FeaturesGuidePage = () => {
       <div data-theme="dark" className="min-h-screen overflow-x-hidden bg-background text-foreground">
         <LandingNavbar />
 
-        {/* Back to pricing — floating chip merged with header */}
-        <button
-          onClick={() => goBackOr(navigate, "/pricing")}
-          className="fixed left-3 md:left-6 top-3 z-[60] h-16 inline-flex items-center gap-2 px-4 md:px-5 rounded-full border border-border bg-card/80 backdrop-blur-md text-sm font-semibold text-foreground hover:bg-card hover:border-foreground/30 transition-all"
-          aria-label="Back to pricing"
-        >
-          <span className="text-base leading-none">←</span>
-          <span className="hidden sm:inline">Back to pricing</span>
-        </button>
-
-        <main id="main" className="pt-28">
-          {/* Hero — landing style, huge type */}
-          <section className="relative max-w-6xl mx-auto px-5 sm:px-8 pt-10 sm:pt-20 pb-20 sm:pb-32 text-center">
+        <main id="main" className="pt-24 sm:pt-28">
+          {/* Hero */}
+          <section className="relative max-w-5xl mx-auto px-5 sm:px-8 pt-12 sm:pt-20 pb-16 sm:pb-24 text-center">
             <div
               aria-hidden
-              className="absolute inset-x-0 top-0 h-[60vh] -z-10 opacity-60 pointer-events-none"
+              className="absolute inset-x-0 -top-10 h-[55vh] -z-10 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at 50% 0%, hsl(var(--foreground) / 0.08), transparent 60%)",
+                  "radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--foreground) / 0.10), transparent 70%)",
               }}
             />
+
+            <motion.button
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              onClick={() => goBackOr(navigate, "/pricing")}
+              className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-border bg-card/60 backdrop-blur-sm text-xs font-semibold text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+            >
+              <span className="leading-none">←</span>
+              <span>Back to pricing</span>
+            </motion.button>
+
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-[11px] font-bold tracking-[0.32em] uppercase text-muted-foreground mb-7"
+              className="text-[11px] font-bold tracking-[0.32em] uppercase text-muted-foreground/80 mb-6"
             >
               Megsy Services · Plan Comparison
             </motion.p>
+
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               className="font-black tracking-tight leading-[0.95] text-foreground"
-              style={{ fontSize: "clamp(2.8rem, 9vw, 7rem)", letterSpacing: "-0.045em" }}
+              style={{ fontSize: "clamp(2.6rem, 8vw, 6rem)", letterSpacing: "-0.045em" }}
             >
-              Everything
+              Everything Megsy
               <br />
-              <span className="italic font-light text-muted-foreground">
-                Megsy does.
-              </span>
+              does, explained.
             </motion.h1>
+
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="mx-auto mt-8 max-w-2xl text-muted-foreground font-medium"
-              style={{ fontSize: "clamp(1rem, 1.7vw, 1.25rem)" }}
+              className="mx-auto mt-7 max-w-xl text-muted-foreground"
+              style={{ fontSize: "clamp(0.98rem, 1.4vw, 1.15rem)", lineHeight: 1.55 }}
             >
-              Eleven services, four plans, one transparent system. See exactly what's
-              included on every plan — with live previews of every tool.
+              Eleven services, four plans, one transparent system. Scroll through every
+              tool with a live preview, then compare plans side by side.
             </motion.p>
 
             {/* Tier strip */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-12 flex flex-wrap justify-center gap-2 sm:gap-3"
+              className="mt-10 inline-flex flex-wrap justify-center gap-1.5 p-1.5 rounded-full border border-border bg-card/50 backdrop-blur-sm"
             >
               {TIERS.map((t) => {
                 const meta = TIER_META[t];
                 return (
                   <div
                     key={t}
-                    className="px-4 sm:px-5 py-2 rounded-full border border-border bg-card/60 backdrop-blur-sm text-xs sm:text-sm"
+                    className="px-4 py-1.5 rounded-full text-[12px] sm:text-[13px] hover:bg-foreground/[0.04] transition-colors"
                   >
-                    <span className="font-black text-foreground">{t}</span>
-                    <span className="text-muted-foreground mx-2">·</span>
-                    <span className="font-semibold text-muted-foreground">{meta.price}/mo</span>
+                    <span className="font-bold text-foreground">{t}</span>
+                    <span className="text-muted-foreground/60 mx-1.5">·</span>
+                    <span className="font-medium text-muted-foreground">{meta.price}</span>
                   </div>
                 );
               })}
             </motion.div>
           </section>
 
-
-          {/* Zigzag service sections — landing style */}
-          <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-24 space-y-28 sm:space-y-40">
+          {/* Zigzag service sections */}
+          <section className="max-w-6xl mx-auto px-5 sm:px-8 pb-24 space-y-24 sm:space-y-32">
             {SERVICES.map((s, i) => {
               const reverse = i % 2 === 1;
               return (
                 <motion.article
                   key={s.name}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.7 }}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+                  transition={{ duration: 0.6 }}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center"
                 >
-                  <div className={reverse ? "lg:order-2" : ""}>
-                    <p className="text-[11px] font-bold tracking-[0.28em] uppercase text-muted-foreground mb-4">
-                      {String(i + 1).padStart(2, "0")} — {s.tagline}
+                  <div className={`lg:col-span-5 ${reverse ? "lg:order-2 lg:col-start-8" : ""}`}>
+                    <p className="text-[11px] font-bold tracking-[0.26em] uppercase text-muted-foreground/70 mb-4">
+                      {String(i + 1).padStart(2, "0")} / {SERVICES.length.toString().padStart(2, "0")}
                     </p>
                     <h2
-                      className="font-black tracking-tight text-foreground leading-[1.05]"
-                      style={{ fontSize: "clamp(1.9rem, 4vw, 3.25rem)", letterSpacing: "-0.025em" }}
+                      className="font-black tracking-tight text-foreground leading-[1.02]"
+                      style={{ fontSize: "clamp(1.85rem, 3.6vw, 2.85rem)", letterSpacing: "-0.025em" }}
                     >
                       {s.name}
                     </h2>
-                    <p className="mt-5 text-foreground/75 leading-relaxed text-base sm:text-lg max-w-xl">
+                    <p className="mt-3 text-sm sm:text-[15px] font-semibold text-foreground/60">
+                      {s.tagline}
+                    </p>
+                    <p className="mt-6 text-foreground/75 leading-relaxed text-[15px] sm:text-base max-w-md">
                       {s.description}
                     </p>
 
-                    <ul className="mt-7 space-y-2.5">
+                    <ul className="mt-7 space-y-2">
                       {s.highlights.map((h) => (
                         <li
                           key={h}
-                          className="flex items-baseline gap-3 text-sm sm:text-[15px] text-foreground/85"
+                          className="flex items-baseline gap-3 text-sm text-foreground/80"
                         >
-                          <span className="text-muted-foreground/60 select-none">—</span>
+                          <span className="text-muted-foreground/40 select-none">—</span>
                           <span>{h}</span>
                         </li>
                       ))}
                     </ul>
-
-                    <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-xl">
-                      {TIERS.map((t) => {
-                        const v = s.values[t];
-                        const text =
-                          typeof v === "boolean" ? (v ? "Included" : "Not included") : v;
-                        const off = v === false;
-                        return (
-                          <div
-                            key={t}
-                            className={`rounded-xl border px-3 py-2.5 ${
-                              off
-                                ? "border-border bg-transparent"
-                                : "border-foreground/20 bg-foreground/[0.03]"
-                            }`}
-                          >
-                            <div className="text-[10px] font-black tracking-[0.18em] uppercase text-muted-foreground">
-                              {t}
-                            </div>
-                            <div
-                              className={`mt-1 text-xs font-bold ${
-                                off ? "text-muted-foreground/50" : "text-foreground"
-                              }`}
-                            >
-                              {text}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
                   </div>
 
-                  <div className={reverse ? "lg:order-1" : ""}>
+                  <div className={`lg:col-span-7 ${reverse ? "lg:order-1 lg:col-start-1" : ""}`}>
                     <MediaBlock media={s.media} />
                   </div>
                 </motion.article>
@@ -447,36 +425,36 @@ const FeaturesGuidePage = () => {
 
           {/* Full comparison table */}
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-            <div className="text-center mb-10">
-              <p className="text-[11px] font-bold tracking-[0.28em] uppercase text-muted-foreground mb-4">
+            <div className="text-center mb-12">
+              <p className="text-[11px] font-bold tracking-[0.28em] uppercase text-muted-foreground/70 mb-4">
                 Full comparison
               </p>
               <h2
                 className="font-black tracking-tight"
-                style={{ fontSize: "clamp(1.9rem, 4vw, 3rem)", letterSpacing: "-0.025em" }}
+                style={{ fontSize: "clamp(1.85rem, 3.6vw, 2.85rem)", letterSpacing: "-0.025em" }}
               >
                 All services, side by side.
               </h2>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card overflow-hidden">
+            <div className="rounded-3xl border border-border bg-card/60 backdrop-blur-sm overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[760px] border-collapse">
                   <thead>
                     <tr className="border-b border-border">
-                      <th className="text-left px-6 py-5 font-bold text-[11px] uppercase tracking-[0.18em] text-muted-foreground sticky left-0 bg-card z-10 min-w-[220px]">
+                      <th className="text-left px-6 py-6 font-bold text-[11px] uppercase tracking-[0.2em] text-muted-foreground/70 sticky left-0 bg-card/95 backdrop-blur-sm z-10 min-w-[220px]">
                         Service
                       </th>
                       {TIERS.map((t) => {
                         const meta = TIER_META[t];
                         return (
-                          <th key={t} className="px-5 py-5 text-center min-w-[150px]">
-                            <div className="font-black text-base text-foreground">{t}</div>
-                            <div className="text-[10px] font-bold tracking-[0.18em] uppercase text-muted-foreground mt-1">
-                              {meta.subtitle}
+                          <th key={t} className="px-5 py-6 text-center min-w-[150px] border-l border-border/60">
+                            <div className="font-black text-base text-foreground tracking-tight">{t}</div>
+                            <div className="mt-1 text-[15px] font-bold text-foreground/85">
+                              {meta.price}<span className="text-xs text-muted-foreground font-medium">/mo</span>
                             </div>
-                            <div className="mt-1.5 text-xs font-bold text-foreground/70">
-                              {meta.price}/mo
+                            <div className="text-[10px] font-semibold tracking-[0.14em] uppercase text-muted-foreground/60 mt-1.5">
+                              {meta.subtitle}
                             </div>
                           </th>
                         );
@@ -487,20 +465,20 @@ const FeaturesGuidePage = () => {
                     {SERVICES.map((s, i) => (
                       <tr
                         key={s.name}
-                        className={`border-b border-border last:border-0 transition-colors hover:bg-foreground/[0.02] ${
-                          i % 2 === 1 ? "bg-foreground/[0.015]" : ""
+                        className={`border-b border-border/60 last:border-0 transition-colors hover:bg-foreground/[0.025] ${
+                          i % 2 === 1 ? "bg-foreground/[0.012]" : ""
                         }`}
                       >
-                        <td className="px-6 py-4 sticky left-0 bg-card z-10">
-                          <div className="font-bold text-sm text-foreground">{s.name}</div>
-                          <div className="text-xs text-muted-foreground font-medium mt-0.5">
+                        <td className="px-6 py-5 sticky left-0 bg-card/95 backdrop-blur-sm z-10">
+                          <div className="font-bold text-[15px] text-foreground tracking-tight">{s.name}</div>
+                          <div className="text-xs text-muted-foreground/80 font-medium mt-1 max-w-[200px]">
                             {s.tagline}
                           </div>
                         </td>
                         {TIERS.map((t) => (
                           <td
                             key={t}
-                            className="px-5 py-4 text-center text-muted-foreground align-middle"
+                            className="px-5 py-5 text-center align-middle border-l border-border/40"
                           >
                             {renderCell(s.values[t])}
                           </td>
@@ -511,28 +489,37 @@ const FeaturesGuidePage = () => {
                 </table>
               </div>
             </div>
-            <p className="mt-4 text-xs text-muted-foreground text-center">
+            <p className="mt-5 text-xs text-muted-foreground/70 text-center">
               Yearly plans get 2 months free + bonus MC. All prices in USD.
             </p>
           </section>
 
-          {/* Final CTA — minimal */}
-          <section className="max-w-4xl mx-auto px-5 sm:px-8 pb-28 text-center">
+          {/* Final CTA */}
+          <section className="max-w-3xl mx-auto px-5 sm:px-8 pb-32 text-center">
             <h2
               className="font-black tracking-tight"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.03em" }}
+              style={{ fontSize: "clamp(2rem, 4.5vw, 3.25rem)", letterSpacing: "-0.03em" }}
             >
               Ready to pick your plan?
             </h2>
-            <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
+            <p className="mt-5 text-muted-foreground max-w-md mx-auto">
               Start free, no card required. Upgrade anytime as you grow.
             </p>
-            <button
-              onClick={() => navigate("/pricing")}
-              className="mt-8 inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-foreground text-background font-bold hover:opacity-90 transition-opacity"
-            >
-              Go to pricing →
-            </button>
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+              <button
+                onClick={() => navigate("/pricing")}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-foreground text-background text-sm font-bold hover:opacity-90 transition-opacity"
+              >
+                Go to pricing
+                <span className="leading-none">→</span>
+              </button>
+              <button
+                onClick={() => goBackOr(navigate, "/")}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-border text-sm font-semibold text-foreground hover:bg-foreground/[0.04] transition-colors"
+              >
+                Back
+              </button>
+            </div>
           </section>
         </main>
 
@@ -545,3 +532,4 @@ const FeaturesGuidePage = () => {
 };
 
 export default FeaturesGuidePage;
+
