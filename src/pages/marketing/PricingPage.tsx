@@ -41,7 +41,7 @@ const PLANS: PlanCardConfig[] = [
   {
     tier: "starter",
     name: "Free",
-    label: "START FREE — NO CARD",
+    label: "",
     bg: "#D1FAE5",
     text: "#1A1A1A",
     subText: "rgba(26,26,26,0.65)",
@@ -120,7 +120,7 @@ const PLANS: PlanCardConfig[] = [
   {
     tier: "business",
     name: "Business",
-    label: "FOR TEAMS WHO SCALE",
+    label: "",
     bg: "#D97706",
     text: "#FFFFFF",
     subText: "rgba(255,255,255,0.82)",
@@ -454,22 +454,7 @@ const PricingPage = () => {
                   minHeight: 540,
                 }}
               >
-                {/* MOST POPULAR badge above Elite */}
-                {p.topBadge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 whitespace-nowrap">
-                    <span
-                      className="inline-block px-6 py-2 text-sm font-black tracking-[0.18em] rounded-full text-foreground"
-                      style={{
-                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
-                        boxShadow: "0 8px 24px -4px rgba(255,165,0,0.6)",
-                        animation: "gold-pulse 2.4s ease-in-out infinite",
-                        textShadow: "0 1px 2px rgba(0,0,0,0.15)",
-                      }}
-                    >
-                      MOST POPULAR
-                    </span>
-                  </div>
-                )}
+                {/* MOST POPULAR badge moved inside card as label */}
 
                 {/* Bubbles (small & subtle, clipped to card) */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[24px]">
@@ -497,8 +482,21 @@ const PricingPage = () => {
 
                 {/* Content */}
                 <div className="relative z-10 p-7 sm:p-8 flex flex-col flex-1">
-                  {/* Label (glass frame) */}
-                  {!p.topBadge && p.label && (
+                  {/* Label (glass frame) — MOST POPULAR uses gold style for Elite */}
+                  {p.topBadge ? (
+                    <span
+                      className="self-start inline-block text-[10px] sm:text-[11px] font-black tracking-[0.18em] px-3 py-1 rounded-full mb-5"
+                      style={{
+                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+                        boxShadow: "0 6px 18px -4px rgba(255,165,0,0.55)",
+                        color: "#1a1a1a",
+                        animation: "gold-pulse 2.4s ease-in-out infinite",
+                        textShadow: "0 1px 2px rgba(0,0,0,0.12)",
+                      }}
+                    >
+                      {p.label || "MOST POPULAR"}
+                    </span>
+                  ) : p.label ? (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 backdrop-blur-md"
                       style={{
@@ -509,8 +507,7 @@ const PricingPage = () => {
                     >
                       {p.label}
                     </span>
-                  )}
-                  {(p.topBadge || !p.label) && (
+                  ) : (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 opacity-0 pointer-events-none"
                       aria-hidden="true"
@@ -519,28 +516,36 @@ const PricingPage = () => {
                     </span>
                   )}
 
-                  <h3
-                    className="font-black"
-                    style={{ fontSize: "clamp(1.5rem, 2.5vw, 1.875rem)" }}
-                  >
-                    {p.name}
-                  </h3>
-
-                  <div className="mt-3 flex items-baseline gap-2 flex-wrap">
-                    <span
+                  {/* Plan name + price + credits — tidy grouped block */}
+                  <div className="flex flex-col gap-1.5">
+                    <h3
                       className="font-black leading-none"
-                      style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}
+                      style={{ fontSize: "clamp(1.25rem, 2vw, 1.5rem)", color: p.text }}
                     >
-                      ${price}
-                    </span>
-                    <span className="text-sm font-medium" style={{ color: p.subText }}>
-                      /{isYearly ? "year" : "month"}
+                      {p.name}
+                    </h3>
+                    <div className="flex items-baseline gap-1.5">
+                      <span
+                        className="font-black leading-none"
+                        style={{ fontSize: "clamp(2.25rem, 4.5vw, 3rem)" }}
+                      >
+                        ${price}
+                      </span>
+                      <span className="text-sm font-semibold" style={{ color: p.subText }}>
+                        /{isYearly ? "year" : "month"}
+                      </span>
+                    </div>
+                    <span
+                      className="self-start inline-block text-[11px] font-bold tracking-wide px-2.5 py-1 rounded-full mt-1"
+                      style={{
+                        background: p.tier === "starter" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.16)",
+                        color: p.text,
+                      }}
+                    >
+                      {credits}
                     </span>
                   </div>
 
-                  <p className="mt-1 text-sm font-semibold" style={{ color: p.subText }}>
-                    {credits}
-                  </p>
 
 
 
@@ -614,65 +619,6 @@ const PricingPage = () => {
           })}
         </div>
 
-        {/* Enterprise — full width white/black */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-12 relative rounded-[28px] overflow-hidden p-8 sm:p-12 bg-card border border-border"
-          style={{
-            boxShadow: "0 30px 60px -20px hsl(var(--foreground) / 0.15)",
-          }}
-        >
-          <div
-            className="absolute inset-0 opacity-40 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at top right, hsl(var(--foreground) / 0.04), transparent 55%), radial-gradient(ellipse at bottom left, hsl(var(--foreground) / 0.03), transparent 60%)",
-            }}
-          />
-          <div className="relative z-10 flex flex-col gap-8">
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
-              <div className="max-w-xl">
-                <span className="inline-block text-[11px] font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground mb-4">
-                  ENTERPRISE
-                </span>
-                <h3
-                  className="font-black text-foreground leading-tight"
-                  style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
-                >
-                  Built for organizations <span className="text-muted-foreground">at scale</span>.
-                </h3>
-                <p className="mt-4 text-muted-foreground text-base leading-relaxed">
-                  Custom MC allocation, dedicated infrastructure, advanced security (SOC2, GDPR), SLA guarantees, and a dedicated account manager.
-                </p>
-              </div>
-              <GlowButton
-                variant="enterprise"
-                onClick={() => navigate("/enterprise")}
-                className="shrink-0"
-              >
-                Contact Sales
-              </GlowButton>
-            </div>
-
-            {/* Enterprise full feature list */}
-            <div>
-              <h4 className="text-foreground font-bold text-sm tracking-[0.18em] uppercase mb-5">
-                Enterprise Plan Features
-              </h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-                {ENTERPRISE_FEATURES.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-muted-foreground text-sm leading-relaxed">
-                    <Check className="w-4 h-4 mt-0.5 shrink-0 text-foreground" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </motion.div>
       </section>
 
       {/* FAQ */}
