@@ -253,17 +253,6 @@ const FeaturesGuidePage = () => {
         <main id="main" className="pt-24">
           {/* Hero */}
           <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-14 pb-10 sm:pb-14 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-foreground/5 border border-border mb-6"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span className="text-xs font-bold tracking-wider uppercase text-muted-foreground">
-                Features & Plan Comparison
-              </span>
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
