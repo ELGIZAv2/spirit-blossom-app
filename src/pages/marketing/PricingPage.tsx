@@ -172,7 +172,7 @@ const ENTERPRISE_FEATURES: string[] = [
 const SERVICES_GUIDE: { name: string; desc: string }[] = [
   {
     name: "Unlimited Chat",
-    desc: "Talk to every premium AI model (GPT, Claude, Gemini, and more) with no daily caps. Free plan uses basic models only.",
+    desc: "Talk to Megsy AI — our own model, with no daily caps. Free plan uses Megsy Lite.",
   },
   {
     name: "Image Generation",
