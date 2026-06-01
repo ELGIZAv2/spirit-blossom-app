@@ -67,7 +67,7 @@ const PLANS: PlanCardConfig[] = [
   {
     tier: "pro",
     name: "Pro",
-    label: "MOST CHOSEN BY CREATORS",
+    label: "",
     bg: "#2563EB",
     text: "#FFFFFF",
     subText: "rgba(255,255,255,0.78)",
@@ -498,7 +498,7 @@ const PricingPage = () => {
                 {/* Content */}
                 <div className="relative z-10 p-7 sm:p-8 flex flex-col flex-1">
                   {/* Label (glass frame) */}
-                  {!p.topBadge && (
+                  {!p.topBadge && p.label && (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 backdrop-blur-md"
                       style={{
@@ -510,7 +510,7 @@ const PricingPage = () => {
                       {p.label}
                     </span>
                   )}
-                  {p.topBadge && (
+                  {(p.topBadge || !p.label) && (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 opacity-0 pointer-events-none"
                       aria-hidden="true"
@@ -592,18 +592,7 @@ const PricingPage = () => {
                             borderTop: idx === 0 ? "none" : `1px solid ${dividerColor}`,
                           }}
                         >
-                          <span
-                            className="shrink-0 mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full"
-                            style={{
-                              background: isUnlimited
-                                ? (isStarter
-                                    ? "rgba(16,185,129,0.18)"
-                                    : "rgba(255,215,0,0.22)")
-                                : (isStarter
-                                    ? "rgba(0,0,0,0.06)"
-                                    : "rgba(255,255,255,0.14)"),
-                            }}
-                          >
+                          <span className="shrink-0 mt-0.5 inline-flex items-center justify-center">
                             {isUnlimited && !isStarter ? (
                               <MegsyStar className="w-3.5 h-3.5" />
                             ) : (
