@@ -1,9 +1,10 @@
 import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import LandingNavbar from "@/components/landing/LandingNavbar";
 import SEOHead from "@/components/common/SEOHead";
+import { goBackOr } from "@/lib/navigation";
 
 const LandingFooter = lazy(() => import("@/components/landing/LandingFooter"));
 
@@ -15,11 +16,12 @@ const SectionFallback = () => (
 
 type Tier = "Free" | "Pro" | "Elite" | "Business";
 const TIERS: Tier[] = ["Free", "Pro", "Elite", "Business"];
-const PRICES: Record<Tier, string> = {
-  Free: "$0",
-  Pro: "$25",
-  Elite: "$50",
-  Business: "$125",
+
+const TIER_META: Record<Tier, { price: string; accent: string; subtitle: string }> = {
+  Free:     { price: "$0",    accent: "#10B981", subtitle: "Forever free" },
+  Pro:      { price: "$25",   accent: "#2563EB", subtitle: "For creators" },
+  Elite:    { price: "$50",   accent: "#7C3AED", subtitle: "Most popular" },
+  Business: { price: "$125",  accent: "#D97706", subtitle: "For teams" },
 };
 
 interface ServiceDetail {
@@ -33,7 +35,7 @@ interface ServiceDetail {
 const SERVICES: ServiceDetail[] = [
   {
     name: "AI Chat",
-    tagline: "Talk to every premium model in one place",
+    tagline: "Talk to Megsy AI in one place",
     description:
       "Chat with Megsy AI — our own model built for fast, accurate, multi-turn conversations. Keep your full history, switch reasoning modes, and never get rate-limited on paid plans.",
     highlights: [
@@ -51,7 +53,7 @@ const SERVICES: ServiceDetail[] = [
   },
   {
     name: "Image Generation",
-    tagline: "Studio-quality images from a single prompt",
+    tagline: "Studio-quality images from a prompt",
     description:
       "Generate high-resolution images using the top image models. During your unlimited window (7 / 15 / 30 days depending on plan), generate as many as you want. Outside the window, generation uses MC credits.",
     highlights: [
@@ -62,9 +64,9 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: false,
-      Pro: "Unlimited for 7 days at the start of each month",
-      Elite: "Unlimited for 15 days at the start of each month",
-      Business: "Unlimited all month (30 days)",
+      Pro: "Unlimited 7 days / month",
+      Elite: "Unlimited 15 days / month",
+      Business: "Unlimited all month",
     },
   },
   {
@@ -80,8 +82,8 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: "3 / day",
-      Pro: "Unlimited for 7 days at the start of each month",
-      Elite: "Unlimited for 15 days at the start of each month",
+      Pro: "Unlimited 7 days / month",
+      Elite: "Unlimited 15 days / month",
       Business: "Unlimited all month",
     },
   },
@@ -98,8 +100,8 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: "3 / day each",
-      Pro: "Unlimited for 7 days at the start of each month",
-      Elite: "Unlimited for 15 days at the start of each month",
+      Pro: "Unlimited 7 days / month",
+      Elite: "Unlimited 15 days / month",
       Business: "Unlimited all month",
     },
   },
@@ -116,8 +118,8 @@ const SERVICES: ServiceDetail[] = [
     ],
     values: {
       Free: false,
-      Pro: "Unlimited for 7 days at the start of each month",
-      Elite: "Unlimited for 15 days at the start of each month",
+      Pro: "Unlimited 7 days / month",
+      Elite: "Unlimited 15 days / month",
       Business: "Unlimited all month",
     },
   },
@@ -213,7 +215,7 @@ const SERVICES: ServiceDetail[] = [
   },
   {
     name: "Support",
-    tagline: "From community help to dedicated success",
+    tagline: "From community to dedicated success",
     description:
       "Free users get community support. Pro gets priority email. Elite gets 24/7 chat. Business gets a dedicated success manager with white-glove onboarding.",
     highlights: [
@@ -232,9 +234,9 @@ const SERVICES: ServiceDetail[] = [
 ];
 
 const renderCell = (value: string | boolean) => {
-  if (value === true) return <Check className="w-5 h-5 text-emerald-400 mx-auto" />;
-  if (value === false) return <X className="w-5 h-5 text-muted-foreground/40 mx-auto" />;
-  return <span className="text-sm font-medium">{value}</span>;
+  if (value === true) return <Check className="w-5 h-5 text-emerald-500 mx-auto" strokeWidth={3} />;
+  if (value === false) return <X className="w-5 h-5 text-muted-foreground/40 mx-auto" strokeWidth={2.5} />;
+  return <span className="text-sm font-semibold text-foreground">{value}</span>;
 };
 
 const FeaturesGuidePage = () => {
@@ -243,22 +245,42 @@ const FeaturesGuidePage = () => {
   return (
     <>
       <SEOHead
-        title="Features & Plan Comparison | Megsy"
-        description="Detailed breakdown of every Megsy feature and a side-by-side comparison of Free, Pro, Elite, and Business plans."
+        title="Compare Plans & Features | Megsy AI"
+        description="A clean, side-by-side comparison of every Megsy feature across Free, Pro, Elite, and Business plans."
         path="/features-guide"
       />
-      <div data-theme="dark" className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
         <LandingNavbar />
 
         <main id="main" className="pt-24">
+          {/* Top bar with back link */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-2">
+            <button
+              onClick={() => goBackOr(navigate, "/pricing")}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to pricing
+            </button>
+          </div>
+
           {/* Hero */}
-          <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-14 pb-10 sm:pb-14 text-center">
+          <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 pb-10 sm:pb-14 text-center">
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.22em] px-4 py-1.5 rounded-full bg-foreground/[0.06] border border-border text-muted-foreground mb-6"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              PLAN COMPARISON
+            </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               className="font-black tracking-tight leading-[1.05] text-foreground"
-              style={{ fontSize: "clamp(2rem, 6vw, 4.75rem)", letterSpacing: "-0.03em" }}
+              style={{ fontSize: "clamp(2rem, 6vw, 4.5rem)", letterSpacing: "-0.03em" }}
             >
               Everything Megsy does,
               <br />
@@ -279,37 +301,56 @@ const FeaturesGuidePage = () => {
 
           {/* Comparison table */}
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-            <div className="rounded-2xl border border-border bg-card overflow-hidden">
+            <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-[0_20px_60px_-20px_hsl(var(--foreground)/0.12)]">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[720px]">
+                <table className="w-full min-w-[760px] border-collapse">
                   <thead>
-                    <tr className="bg-foreground/[0.03] border-b border-border">
-                      <th className="text-left px-5 py-5 font-bold text-sm sticky left-0 bg-card z-10">
+                    <tr className="border-b border-border">
+                      <th className="text-left px-6 py-5 font-bold text-xs uppercase tracking-[0.15em] text-muted-foreground sticky left-0 bg-card z-10 min-w-[220px]">
                         Feature
                       </th>
-                      {TIERS.map((t) => (
-                        <th key={t} className="px-5 py-5 text-center min-w-[140px]">
-                          <div className="font-black text-base">{t}</div>
-                          <div className="text-xs text-muted-foreground font-medium mt-0.5">
-                            {PRICES[t]}/mo
-                          </div>
-                        </th>
-                      ))}
+                      {TIERS.map((t) => {
+                        const meta = TIER_META[t];
+                        return (
+                          <th
+                            key={t}
+                            className="px-5 py-5 text-center min-w-[160px]"
+                            style={{
+                              borderTop: `3px solid ${meta.accent}`,
+                              background: `linear-gradient(180deg, ${meta.accent}14, transparent)`,
+                            }}
+                          >
+                            <div className="font-black text-lg text-foreground">{t}</div>
+                            <div className="text-[10px] font-bold tracking-[0.18em] uppercase text-muted-foreground mt-1">
+                              {meta.subtitle}
+                            </div>
+                            <div
+                              className="mt-2 inline-block text-xs font-bold px-2.5 py-1 rounded-full"
+                              style={{ background: `${meta.accent}1f`, color: meta.accent }}
+                            >
+                              {meta.price}/mo
+                            </div>
+                          </th>
+                        );
+                      })}
                     </tr>
                   </thead>
                   <tbody>
                     {SERVICES.map((s, i) => (
                       <tr
                         key={s.name}
-                        className={`border-b border-border last:border-0 ${
+                        className={`border-b border-border last:border-0 transition-colors hover:bg-foreground/[0.02] ${
                           i % 2 === 1 ? "bg-foreground/[0.015]" : ""
                         }`}
                       >
-                        <td className="px-5 py-4 font-semibold text-sm sticky left-0 bg-card z-10">
-                          {s.name}
+                        <td className="px-6 py-4 sticky left-0 bg-card z-10">
+                          <div className="font-bold text-sm text-foreground">{s.name}</div>
+                          <div className="text-xs text-muted-foreground font-medium mt-0.5">
+                            {s.tagline}
+                          </div>
                         </td>
                         {TIERS.map((t) => (
-                          <td key={t} className="px-5 py-4 text-center text-muted-foreground">
+                          <td key={t} className="px-5 py-4 text-center text-muted-foreground align-middle">
                             {renderCell(s.values[t])}
                           </td>
                         ))}
@@ -320,16 +361,21 @@ const FeaturesGuidePage = () => {
               </div>
             </div>
             <p className="mt-4 text-xs text-muted-foreground text-center">
-              Yearly plans get 2 months free. All prices in USD.
+              Yearly plans get 2 months free + bonus MC. All prices in USD.
             </p>
           </section>
 
           {/* Detailed sections */}
           <section className="max-w-5xl mx-auto px-5 sm:px-8 pb-16">
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-10 text-center">
-              Deep dive into every feature
-            </h2>
-            <div className="space-y-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight" style={{ letterSpacing: "-0.02em" }}>
+                Deep dive into every feature
+              </h2>
+              <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
+                What it does, what's included, and exactly what each plan gets.
+              </p>
+            </div>
+            <div className="space-y-5">
               {SERVICES.map((s, i) => (
                 <motion.article
                   key={s.name}
@@ -337,43 +383,62 @@ const FeaturesGuidePage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: i * 0.04 }}
-                  className="rounded-2xl border border-border bg-card p-6 sm:p-8"
+                  className="rounded-2xl border border-border bg-card p-6 sm:p-8 hover:border-foreground/20 transition-colors"
                 >
                   <div className="mb-3">
-                    <h3 className="text-xl sm:text-2xl font-black tracking-tight">{s.name}</h3>
-                    <p className="text-sm text-muted-foreground font-medium mt-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-foreground/[0.06] text-xs font-black text-foreground">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-black tracking-tight">{s.name}</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground font-semibold">
                       {s.tagline}
                     </p>
                   </div>
                   <p className="text-foreground/80 leading-relaxed mb-5">{s.description}</p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-6">
                     {s.highlights.map((h) => (
                       <div key={h} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" strokeWidth={3} />
                         <span className="text-muted-foreground">{h}</span>
                       </div>
                     ))}
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-5 border-t border-border">
-                    {TIERS.map((t) => (
-                      <div
-                        key={t}
-                        className="rounded-lg bg-foreground/[0.03] border border-border px-3 py-2.5"
-                      >
-                        <div className="text-[10px] font-bold tracking-[0.15em] uppercase text-muted-foreground">
-                          {t}
+                    {TIERS.map((t) => {
+                      const meta = TIER_META[t];
+                      const v = s.values[t];
+                      const text =
+                        typeof v === "boolean"
+                          ? v
+                            ? "Included"
+                            : "Not included"
+                          : v;
+                      const notIncluded = v === false;
+                      return (
+                        <div
+                          key={t}
+                          className="rounded-lg border border-border px-3 py-2.5 transition-all"
+                          style={{
+                            background: notIncluded ? "transparent" : `${meta.accent}0d`,
+                            borderColor: notIncluded ? "hsl(var(--border))" : `${meta.accent}40`,
+                          }}
+                        >
+                          <div
+                            className="text-[10px] font-black tracking-[0.18em] uppercase"
+                            style={{ color: notIncluded ? "hsl(var(--muted-foreground))" : meta.accent }}
+                          >
+                            {t}
+                          </div>
+                          <div className={`mt-1 text-xs font-bold ${notIncluded ? "text-muted-foreground/60" : "text-foreground"}`}>
+                            {text}
+                          </div>
                         </div>
-                        <div className="mt-1 text-xs font-semibold text-foreground">
-                          {typeof s.values[t] === "boolean"
-                            ? s.values[t]
-                              ? "Included"
-                              : "Not included"
-                            : (s.values[t] as string)}
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </motion.article>
               ))}
@@ -382,20 +447,37 @@ const FeaturesGuidePage = () => {
 
           {/* CTA */}
           <section className="max-w-4xl mx-auto px-5 sm:px-8 pb-24 text-center">
-            <div className="rounded-3xl bg-gradient-to-br from-purple-600/20 via-fuchsia-500/10 to-amber-500/10 border border-border p-10 sm:p-14">
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-                Ready to pick your plan?
-              </h2>
-              <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-                Start free, no card required. Upgrade anytime as you grow.
-              </p>
-              <button
-                onClick={() => navigate("/pricing")}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-foreground text-background font-bold hover:opacity-90 transition-opacity"
-              >
-                Go to pricing
-                <ArrowRight className="w-4 h-4" />
-              </button>
+            <div className="relative overflow-hidden rounded-3xl border border-border p-10 sm:p-14"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%)",
+              }}
+            >
+              <div
+                aria-hidden
+                className="absolute -top-20 -left-20 w-72 h-72 rounded-full opacity-40 blur-3xl pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(124,58,237,0.5), transparent 70%)" }}
+              />
+              <div
+                aria-hidden
+                className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full opacity-40 blur-3xl pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(255,165,0,0.5), transparent 70%)" }}
+              />
+              <div className="relative z-10">
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-4" style={{ letterSpacing: "-0.02em" }}>
+                  Ready to pick your plan?
+                </h2>
+                <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+                  Start free, no card required. Upgrade anytime as you grow.
+                </p>
+                <button
+                  onClick={() => navigate("/pricing")}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-foreground text-background font-bold hover:opacity-90 transition-opacity"
+                >
+                  Go to pricing
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </section>
         </main>

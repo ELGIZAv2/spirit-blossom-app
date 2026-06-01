@@ -47,8 +47,8 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(26,26,26,0.65)",
     monthlyPrice: 0,
     yearlyPrice: 0,
-    monthlyCredits: "0 credits — pure free tier",
-    yearlyCredits: "0 credits — pure free tier",
+    monthlyCredits: "",
+    yearlyCredits: "",
     features: [
       "Unlimited chat — Megsy Lite",
       "Slides: 3 generations / day",
@@ -417,16 +417,6 @@ const PricingPage = () => {
           </button>
         </div>
 
-        {/* Single explainer CTA — opens full features-guide page */}
-        <div className="mt-6 flex justify-center">
-          <button
-            onClick={() => navigate("/features-guide")}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-foreground/5 hover:bg-foreground/10 border border-border text-foreground transition-colors"
-          >
-            <Info className="w-4 h-4" />
-            Compare plans & see what each feature does
-          </button>
-        </div>
       </section>
 
       {/* Plans grid */}
@@ -535,15 +525,17 @@ const PricingPage = () => {
                         /{isYearly ? "year" : "month"}
                       </span>
                     </div>
-                    <span
-                      className="self-start inline-block text-[11px] font-bold tracking-wide px-2.5 py-1 rounded-full mt-1"
-                      style={{
-                        background: p.tier === "starter" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.16)",
-                        color: p.text,
-                      }}
-                    >
-                      {credits}
-                    </span>
+                    {credits && (
+                      <span
+                        className="self-start inline-block text-[11px] font-bold tracking-wide px-2.5 py-1 rounded-full mt-1"
+                        style={{
+                          background: p.tier === "starter" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.16)",
+                          color: p.text,
+                        }}
+                      >
+                        {credits}
+                      </span>
+                    )}
                   </div>
 
 
@@ -564,11 +556,6 @@ const PricingPage = () => {
                       `Get ${p.name}`
                     )}
                   </GlowButton>
-                  {p.tier === "starter" && (
-                    <p className="mt-2 text-[11px] leading-snug" style={{ color: p.subText }}>
-                      No credit card required. Forever free tier.
-                    </p>
-                  )}
 
 
 
@@ -618,6 +605,81 @@ const PricingPage = () => {
             );
           })}
         </div>
+
+        {/* Comparison & services explainer — prominent banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-14 relative overflow-hidden rounded-[28px] border border-border"
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%)",
+            boxShadow: "0 30px 80px -30px hsl(var(--foreground) / 0.18)",
+          }}
+        >
+          {/* glow accents */}
+          <div
+            aria-hidden
+            className="absolute -top-24 -left-20 w-72 h-72 rounded-full opacity-40 blur-3xl pointer-events-none"
+            style={{ background: "radial-gradient(circle, rgba(124,58,237,0.45), transparent 70%)" }}
+          />
+          <div
+            aria-hidden
+            className="absolute -bottom-24 -right-20 w-72 h-72 rounded-full opacity-40 blur-3xl pointer-events-none"
+            style={{ background: "radial-gradient(circle, rgba(255,165,0,0.45), transparent 70%)" }}
+          />
+
+          <div className="relative z-10 p-8 sm:p-12 flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">
+            <div className="flex-1">
+              <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] px-3 py-1.5 rounded-full bg-foreground/10 border border-border text-foreground mb-5">
+                <Info className="w-3.5 h-3.5" />
+                FULL COMPARISON
+              </span>
+              <h3
+                className="font-black text-foreground leading-tight"
+                style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", letterSpacing: "-0.02em" }}
+              >
+                See every feature, side by side.
+              </h3>
+              <p className="mt-4 text-muted-foreground text-base leading-relaxed max-w-xl">
+                A clear, honest breakdown of all 11 services across Free, Pro, Elite and Business — limits, credits, speed, support and team features. No fine print.
+              </p>
+
+              <div className="mt-6 grid grid-cols-3 gap-3 max-w-md">
+                {[
+                  { n: "11", l: "Services" },
+                  { n: "4", l: "Plans" },
+                  { n: "1", l: "Clear table" },
+                ].map((s) => (
+                  <div
+                    key={s.l}
+                    className="rounded-xl bg-background/60 border border-border px-3 py-3 text-center backdrop-blur-sm"
+                  >
+                    <div className="font-black text-foreground text-2xl leading-none">{s.n}</div>
+                    <div className="mt-1 text-[10px] font-bold tracking-[0.18em] uppercase text-muted-foreground">
+                      {s.l}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="shrink-0 flex flex-col items-stretch sm:items-end gap-3">
+              <button
+                onClick={() => navigate("/features-guide")}
+                className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full text-base font-bold bg-foreground text-background hover:opacity-90 transition-all hover:scale-[1.02] shadow-lg"
+              >
+                Compare all plans
+                <ArrowLeft className="w-4 h-4 rotate-180 transition-transform group-hover:translate-x-1" />
+              </button>
+              <p className="text-xs text-muted-foreground text-center sm:text-right">
+                Takes ~30 seconds to read
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
       </section>
 
