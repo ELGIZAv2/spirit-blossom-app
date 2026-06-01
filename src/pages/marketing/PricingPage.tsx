@@ -50,7 +50,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyCredits: "0 credits — pure free tier",
     yearlyCredits: "0 credits — pure free tier",
     features: [
-      "Unlimited chat — basic models only",
+      "Unlimited chat — Megsy Lite",
       "Slides: 3 generations / day",
       "Docs: 3 generations / day",
       "Deep Research: 3 generations / day",
@@ -76,7 +76,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyCredits: "100 MC / month",
     yearlyCredits: "1,400 MC / year (2 months bonus)",
     features: [
-      "Unlimited chat — every premium model",
+      "Unlimited chat — Megsy AI",
       "Unlimited 7 days / month — Images, Slides, Docs, Deep Research & Code Builder",
       "Unlimited Megsy OS autonomous tasks",
       "Video generation — 100 MC included",
@@ -100,7 +100,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyCredits: "250 MC / month",
     yearlyCredits: "3,500 MC / year (2 months bonus)",
     features: [
-      "Unlimited chat — every premium model",
+      "Unlimited chat — Megsy AI",
       "Unlimited 15 days / month — Images, Slides, Docs, Deep Research & Code Builder",
       "Unlimited Megsy OS autonomous tasks",
       "Video generation — 250 MC included",
@@ -129,7 +129,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyCredits: "600 MC / month",
     yearlyCredits: "8,400 MC / year (2 months bonus)",
     features: [
-      "Unlimited chat — every premium model",
+      "Unlimited chat — Megsy AI",
       "Unlimited all month — Images, Slides, Docs, Deep Research & Code Builder",
       "Unlimited Megsy OS autonomous tasks",
       "Unlimited team seats",
