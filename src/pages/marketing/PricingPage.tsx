@@ -599,17 +599,8 @@ const PricingPage = () => {
                             fontWeight: isUnlimited ? 700 : undefined,
                           }}
                         >
-                          {isUnlimited && p.tier !== "starter" ? (
+                          {isUnlimited && p.tier !== "starter" && (
                             <MegsyStar className="w-4 h-4 shrink-0 mt-0.5" />
-                          ) : (
-                            <Check
-                              className="w-4 h-4 shrink-0 mt-0.5"
-                              style={{
-                                color: isUnlimited
-                                  ? "#059669"
-                                  : p.text,
-                              }}
-                            />
                           )}
                           <span>{f}</span>
                         </li>
