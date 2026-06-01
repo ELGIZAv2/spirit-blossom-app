@@ -133,7 +133,7 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.82)",
     monthlyPrice: 125,
     yearlyPrice: 1250,
-    monthlyCredits: "3,50 MC / month",
+    monthlyCredits: "300 MC / month",
     yearlyCredits: "3,600 MC / year",
     features: [
       "Everything in Elite, plus:",
