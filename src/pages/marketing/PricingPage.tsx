@@ -12,7 +12,6 @@ import SEOHead from "@/components/common/SEOHead";
 import MegsyStar from "@/components/branding/MegsyStar";
 import { PaymentMethods } from "@/components/branding/PaymentMethods";
 import { DodoPaymentsBadge } from "@/components/branding/DodoPaymentsBadge";
-import ExclusiveDiscountCard from "@/components/pricing/ExclusiveDiscountCard";
 
 type PlanTier = "starter" | "pro" | "elite" | "business";
 
