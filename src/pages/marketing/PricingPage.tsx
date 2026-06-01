@@ -120,7 +120,7 @@ const PLANS: PlanCardConfig[] = [
   {
     tier: "business",
     name: "Business",
-    label: "FOR TEAMS WHO SCALE",
+    label: "",
     bg: "#D97706",
     text: "#FFFFFF",
     subText: "rgba(255,255,255,0.82)",
