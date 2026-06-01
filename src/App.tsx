@@ -363,6 +363,7 @@ const App = () => {
                   <Route path="/ref/:code" element={<ReferralRedirectPage />} />
 
                   <Route path="/pricing" element={<PricingPage />} />
+                  <Route path="/features-guide" element={<FeaturesGuidePage />} />
                   <Route path="/plans-models" element={<PlansModelsPage />} />
 
                   <Route path="/megsy-corn" element={<MegsyCornPage />} />
