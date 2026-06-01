@@ -466,7 +466,28 @@ const PricingPage = () => {
                   minHeight: 540,
                 }}
               >
-                {/* MOST POPULAR badge moved inside card as label */}
+                {/* MOST POPULAR — floating ribbon at top-right corner of Elite card */}
+                {p.topBadge && (
+                  <div className="absolute -top-3 right-5 z-20 pointer-events-none">
+                    <div
+                      className="relative px-4 py-1.5 rounded-md text-[10px] font-black tracking-[0.22em] text-foreground"
+                      style={{
+                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+                        boxShadow: "0 10px 24px -6px rgba(255,165,0,0.7), 0 0 0 2px rgba(255,255,255,0.15) inset",
+                        animation: "gold-pulse 2.4s ease-in-out infinite",
+                        textShadow: "0 1px 2px rgba(0,0,0,0.15)",
+                      }}
+                    >
+                      ★ MOST POPULAR
+                      {/* notch tail */}
+                      <span
+                        className="absolute -bottom-1.5 right-3 w-3 h-3 rotate-45"
+                        style={{ background: "#FFA500" }}
+                        aria-hidden
+                      />
+                    </div>
+                  </div>
+                )}
 
                 {/* Bubbles (small & subtle, clipped to card) */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[24px]">
