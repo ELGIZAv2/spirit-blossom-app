@@ -139,7 +139,6 @@ const PLANS: PlanCardConfig[] = [
       "Docs & Deep Research: unlimited all month",
       "Code Builder: unlimited all month",
       "Video generation — 600 MC included",
-      "Megsy OS — unlimited autonomous tasks",
       "Unlimited team seats",
       "SSO & SAML authentication",
       "Dedicated infrastructure",
