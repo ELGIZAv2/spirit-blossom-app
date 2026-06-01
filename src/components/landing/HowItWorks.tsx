@@ -58,8 +58,8 @@ const items = [
   {
     bg: "bg-value-yellow",
     icon: <ArrowIcon />,
-    title: "80+ MODELS, ONE PLAN",
-    desc: "OpenAI, Google, xAI, Black Forest Labs and more — switch models instantly with one subscription.",
+    title: "ONE MODEL, EVERY TASK",
+    desc: "Megsy AI handles chat, images, video, slides, docs and code — one subscription, no juggling tools.",
   },
   {
     bg: "bg-value-yellow",

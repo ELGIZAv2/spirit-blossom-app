@@ -50,7 +50,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyCredits: "0 credits — pure free tier",
     yearlyCredits: "0 credits — pure free tier",
     features: [
-      "Unlimited chat — basic models only",
+      "Unlimited chat — Megsy Lite",
       "Slides: 3 generations / day",
       "Docs: 3 generations / day",
       "Deep Research: 3 generations / day",
@@ -76,7 +76,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyCredits: "100 MC / month",
     yearlyCredits: "1,400 MC / year (2 months bonus)",
     features: [
-      "Unlimited chat — every premium model",
+      "Unlimited chat — Megsy AI",
       "Unlimited 7 days / month — Images, Slides, Docs, Deep Research & Code Builder",
       "Unlimited Megsy OS autonomous tasks",
       "Video generation — 100 MC included",
@@ -100,7 +100,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyCredits: "250 MC / month",
     yearlyCredits: "3,500 MC / year (2 months bonus)",
     features: [
-      "Unlimited chat — every premium model",
+      "Unlimited chat — Megsy AI",
       "Unlimited 15 days / month — Images, Slides, Docs, Deep Research & Code Builder",
       "Unlimited Megsy OS autonomous tasks",
       "Video generation — 250 MC included",
@@ -129,7 +129,7 @@ const PLANS: PlanCardConfig[] = [
     monthlyCredits: "600 MC / month",
     yearlyCredits: "8,400 MC / year (2 months bonus)",
     features: [
-      "Unlimited chat — every premium model",
+      "Unlimited chat — Megsy AI",
       "Unlimited all month — Images, Slides, Docs, Deep Research & Code Builder",
       "Unlimited Megsy OS autonomous tasks",
       "Unlimited team seats",
@@ -172,7 +172,7 @@ const ENTERPRISE_FEATURES: string[] = [
 const SERVICES_GUIDE: { name: string; desc: string }[] = [
   {
     name: "Unlimited Chat",
-    desc: "Talk to every premium AI model (GPT, Claude, Gemini, and more) with no daily caps. Free plan uses basic models only.",
+    desc: "Talk to Megsy AI — our own model, with no daily caps. Free plan uses Megsy Lite.",
   },
   {
     name: "Image Generation",
@@ -692,9 +692,6 @@ const PricingPage = () => {
           transition={{ duration: 0.55 }}
           className="text-center mb-10"
         >
-          <span className="inline-block text-[11px] font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground mb-4">
-            FAQ
-          </span>
           <h3
             className="font-black text-foreground leading-tight"
             style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
