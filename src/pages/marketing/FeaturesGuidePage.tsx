@@ -287,52 +287,85 @@ const FeaturesGuidePage = () => {
         description="A clean, in-depth walkthrough of every Megsy service with live previews and a side-by-side plan comparison."
         path="/features-guide"
       />
-      <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      <div data-theme="dark" className="min-h-screen overflow-x-hidden bg-background text-foreground">
         <LandingNavbar />
 
-        <main id="main" className="pt-24">
-          {/* Back link */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-2">
-            <button
-              onClick={() => goBackOr(navigate, "/pricing")}
-              className="text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
-            >
-              ← Back to pricing
-            </button>
-          </div>
+        {/* Back to pricing — floating chip merged with header */}
+        <button
+          onClick={() => goBackOr(navigate, "/pricing")}
+          className="fixed left-3 md:left-6 top-3 z-[60] h-16 inline-flex items-center gap-2 px-4 md:px-5 rounded-full border border-border bg-card/80 backdrop-blur-md text-sm font-semibold text-foreground hover:bg-card hover:border-foreground/30 transition-all"
+          aria-label="Back to pricing"
+        >
+          <span className="text-base leading-none">←</span>
+          <span className="hidden sm:inline">Back to pricing</span>
+        </button>
 
-          {/* Hero — landing style */}
-          <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-8 sm:pt-14 pb-16 sm:pb-24 text-center">
+        <main id="main" className="pt-28">
+          {/* Hero — landing style, huge type */}
+          <section className="relative max-w-6xl mx-auto px-5 sm:px-8 pt-10 sm:pt-20 pb-20 sm:pb-32 text-center">
+            <div
+              aria-hidden
+              className="absolute inset-x-0 top-0 h-[60vh] -z-10 opacity-60 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 50% 0%, hsl(var(--foreground) / 0.08), transparent 60%)",
+              }}
+            />
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-[11px] font-bold tracking-[0.28em] uppercase text-muted-foreground mb-6"
+              className="text-[11px] font-bold tracking-[0.32em] uppercase text-muted-foreground mb-7"
             >
-              Megsy Services
+              Megsy Services · Plan Comparison
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="font-black tracking-tight leading-[1.02] text-foreground"
-              style={{ fontSize: "clamp(2.4rem, 7.5vw, 5.5rem)", letterSpacing: "-0.035em" }}
+              className="font-black tracking-tight leading-[0.95] text-foreground"
+              style={{ fontSize: "clamp(2.8rem, 9vw, 7rem)", letterSpacing: "-0.045em" }}
             >
-              Everything Megsy does,
+              Everything
               <br />
-              <span className="italic font-light text-muted-foreground">explained clearly.</span>
+              <span className="italic font-light text-muted-foreground">
+                Megsy does.
+              </span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="mx-auto mt-7 max-w-2xl text-muted-foreground font-medium"
-              style={{ fontSize: "clamp(1rem, 1.7vw, 1.2rem)" }}
+              className="mx-auto mt-8 max-w-2xl text-muted-foreground font-medium"
+              style={{ fontSize: "clamp(1rem, 1.7vw, 1.25rem)" }}
             >
               Eleven services, four plans, one transparent system. See exactly what's
-              included and how each tool works — with live previews.
+              included on every plan — with live previews of every tool.
             </motion.p>
+
+            {/* Tier strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mt-12 flex flex-wrap justify-center gap-2 sm:gap-3"
+            >
+              {TIERS.map((t) => {
+                const meta = TIER_META[t];
+                return (
+                  <div
+                    key={t}
+                    className="px-4 sm:px-5 py-2 rounded-full border border-border bg-card/60 backdrop-blur-sm text-xs sm:text-sm"
+                  >
+                    <span className="font-black text-foreground">{t}</span>
+                    <span className="text-muted-foreground mx-2">·</span>
+                    <span className="font-semibold text-muted-foreground">{meta.price}/mo</span>
+                  </div>
+                );
+              })}
+            </motion.div>
           </section>
+
 
           {/* Zigzag service sections — landing style */}
           <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-24 space-y-28 sm:space-y-40">
