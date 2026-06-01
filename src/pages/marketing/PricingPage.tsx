@@ -619,65 +619,6 @@ const PricingPage = () => {
           })}
         </div>
 
-        {/* Enterprise — full width white/black */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-12 relative rounded-[28px] overflow-hidden p-8 sm:p-12 bg-card border border-border"
-          style={{
-            boxShadow: "0 30px 60px -20px hsl(var(--foreground) / 0.15)",
-          }}
-        >
-          <div
-            className="absolute inset-0 opacity-40 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at top right, hsl(var(--foreground) / 0.04), transparent 55%), radial-gradient(ellipse at bottom left, hsl(var(--foreground) / 0.03), transparent 60%)",
-            }}
-          />
-          <div className="relative z-10 flex flex-col gap-8">
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
-              <div className="max-w-xl">
-                <span className="inline-block text-[11px] font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground mb-4">
-                  ENTERPRISE
-                </span>
-                <h3
-                  className="font-black text-foreground leading-tight"
-                  style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
-                >
-                  Built for organizations <span className="text-muted-foreground">at scale</span>.
-                </h3>
-                <p className="mt-4 text-muted-foreground text-base leading-relaxed">
-                  Custom MC allocation, dedicated infrastructure, advanced security (SOC2, GDPR), SLA guarantees, and a dedicated account manager.
-                </p>
-              </div>
-              <GlowButton
-                variant="enterprise"
-                onClick={() => navigate("/enterprise")}
-                className="shrink-0"
-              >
-                Contact Sales
-              </GlowButton>
-            </div>
-
-            {/* Enterprise full feature list */}
-            <div>
-              <h4 className="text-foreground font-bold text-sm tracking-[0.18em] uppercase mb-5">
-                Enterprise Plan Features
-              </h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-                {ENTERPRISE_FEATURES.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-muted-foreground text-sm leading-relaxed">
-                    <Check className="w-4 h-4 mt-0.5 shrink-0 text-foreground" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </motion.div>
       </section>
 
       {/* FAQ */}
