@@ -78,8 +78,8 @@ const PLANS: PlanCardConfig[] = [
     features: [
       "Unlimited chat — every premium model",
       "Unlimited 7 days / month — Images, Slides, Docs, Deep Research & Code Builder",
+      "Unlimited Megsy OS autonomous tasks",
       "Video generation — 100 MC included",
-      "Megsy OS — unlimited autonomous tasks",
       "Team workspace included",
       "Priority email support",
     ],
