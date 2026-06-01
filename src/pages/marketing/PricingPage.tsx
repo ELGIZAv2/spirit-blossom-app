@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, Loader2, Info } from "lucide-react";
+import { ArrowLeft, Check, Loader2, Info, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -209,6 +209,37 @@ const SERVICES_GUIDE: { name: string; desc: string }[] = [
   {
     name: "Priority Queue",
     desc: "Elite & Business get 3× faster generation speeds and skip the standard queue.",
+  },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "Can I change or cancel my plan anytime?",
+    a: "Yes. You can upgrade, downgrade, or cancel at any time from your billing settings. Upgrades take effect immediately; downgrades take effect at the end of the current billing cycle.",
+  },
+  {
+    q: "What happens when I run out of Megsy Credits (MC)?",
+    a: "Your unlimited services (chat, images, slides, docs, code) keep working normally inside your plan's unlimited window. MC are only consumed for video generation and any usage outside that window. You can top up MC anytime or wait for the next renewal.",
+  },
+  {
+    q: "What's the difference between the 'unlimited window' and MC?",
+    a: "Each paid plan gives you an unlimited window (7 days for Pro, 15 for Elite, all month for Business) where Images, Slides, Docs, Deep Research and Code Builder have no caps. Video generation is always credit-based and uses your monthly MC balance.",
+  },
+  {
+    q: "Do unused credits roll over?",
+    a: "Unused MC roll over within the same billing month and reset at renewal. Yearly plans get a 2-month credit bonus upfront.",
+  },
+  {
+    q: "Do you offer refunds?",
+    a: "Yes — we offer a 14-day money-back guarantee on first-time subscriptions, no questions asked. See our Refund Policy in the footer for full details.",
+  },
+  {
+    q: "Is my payment secure?",
+    a: "All payments are processed by Dodo Payments with bank-grade encryption. We never store your card details on our servers.",
+  },
+  {
+    q: "Do you offer team or enterprise plans?",
+    a: "Yes. Business includes unlimited team seats. For custom MC allocation, SSO, SLA guarantees, or dedicated infrastructure, contact our sales team via the Enterprise card above.",
   },
 ];
 
@@ -652,6 +683,59 @@ const PricingPage = () => {
         </motion.div>
       </section>
 
+      {/* FAQ */}
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="text-center mb-10"
+        >
+          <span className="inline-block text-[11px] font-bold tracking-[0.2em] px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground mb-4">
+            FAQ
+          </span>
+          <h3
+            className="font-black text-foreground leading-tight"
+            style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)" }}
+          >
+            Frequently asked questions
+          </h3>
+          <p className="mt-3 text-muted-foreground text-base">
+            Everything you need to know before picking a plan.
+          </p>
+        </motion.div>
+
+        <div className="space-y-3">
+          {FAQS.map((item, i) => (
+            <motion.details
+              key={item.q}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              className="group rounded-2xl border border-border bg-card overflow-hidden"
+            >
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 sm:px-6 sm:py-5 hover:bg-muted/40 transition-colors">
+                <span className="font-semibold text-foreground text-sm sm:text-base">
+                  {item.q}
+                </span>
+                <ChevronDown className="w-5 h-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+              </summary>
+              <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-sm text-muted-foreground leading-relaxed">
+                {item.a}
+              </div>
+            </motion.details>
+          ))}
+        </div>
+
+        <p className="mt-10 text-center text-sm text-muted-foreground">
+          Still have questions?{" "}
+          <a href="mailto:support@megsyai.com" className="font-semibold text-foreground hover:underline">
+            support@megsyai.com
+          </a>
+        </p>
+      </section>
 
       {/* Footer */}
       <footer className="border-t border-border bg-background">
