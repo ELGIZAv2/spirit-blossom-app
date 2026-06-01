@@ -535,15 +535,17 @@ const PricingPage = () => {
                         /{isYearly ? "year" : "month"}
                       </span>
                     </div>
-                    <span
-                      className="self-start inline-block text-[11px] font-bold tracking-wide px-2.5 py-1 rounded-full mt-1"
-                      style={{
-                        background: p.tier === "starter" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.16)",
-                        color: p.text,
-                      }}
-                    >
-                      {credits}
-                    </span>
+                    {credits && (
+                      <span
+                        className="self-start inline-block text-[11px] font-bold tracking-wide px-2.5 py-1 rounded-full mt-1"
+                        style={{
+                          background: p.tier === "starter" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.16)",
+                          color: p.text,
+                        }}
+                      >
+                        {credits}
+                      </span>
+                    )}
                   </div>
 
 
