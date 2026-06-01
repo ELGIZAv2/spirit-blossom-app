@@ -186,6 +186,50 @@ const ENTERPRISE_FEATURES: string[] = [
   "Custom Contract, Invoicing & Billing",
 ];
 
+const SERVICES_GUIDE: { name: string; desc: string }[] = [
+  {
+    name: "Unlimited Chat",
+    desc: "Talk to every premium AI model (GPT, Claude, Gemini, and more) with no daily caps. Free plan uses basic models only.",
+  },
+  {
+    name: "Image Generation",
+    desc: "Generate unlimited high-quality images during your unlimited window (7/15/30 days depending on plan). Outside the window, uses MC credits.",
+  },
+  {
+    name: "Slides & Presentations",
+    desc: "Create complete slide decks from a prompt — fully editable, exportable to PPT/PDF. Free plan: 3 / day.",
+  },
+  {
+    name: "Docs & Deep Research",
+    desc: "Long-form documents and multi-source research reports with citations. Free plan: 3 of each per day.",
+  },
+  {
+    name: "Code Builder",
+    desc: "Build full apps and websites in natural language, with one-click deploy. Unlimited during your plan window.",
+  },
+  {
+    name: "Video Generation",
+    desc: "Credit-based on all plans. Each video consumes MC from your monthly balance — never charged extra.",
+  },
+  {
+    name: "Megsy OS",
+    desc: "Your autonomous 24/7 agent. Runs tasks, monitors projects, and executes multi-step work in the background. Included on Pro and above.",
+  },
+  {
+    name: "Megsy Credits (MC)",
+    desc: "Credits cover video generation and any usage outside your unlimited windows. Unused credits roll over within the billing month.",
+  },
+  {
+    name: "Team Workspace",
+    desc: "Shared projects, files, and chats for your team. Pro+ includes seats; Business is unlimited.",
+  },
+  {
+    name: "Priority Queue",
+    desc: "Elite & Business get 3× faster generation speeds and skip the standard queue.",
+  },
+];
+
+
 
 const PricingPage = () => {
   const navigate = useNavigate();
