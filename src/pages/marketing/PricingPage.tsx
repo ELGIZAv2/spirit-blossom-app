@@ -417,16 +417,16 @@ const PricingPage = () => {
           </button>
         </div>
 
-        {/* Compare plans — simple text link */}
+        {/* Compare plans — pill link */}
         <motion.button
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           onClick={() => navigate("/features-guide")}
-          className="group mt-6 mx-auto inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors underline-offset-4 hover:underline"
+          className="group mt-7 mx-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card hover:bg-foreground/[0.04] hover:border-foreground/30 transition-all text-sm font-semibold text-foreground"
         >
           Want to know more about Megsy's services?
-          <span className="text-foreground group-hover:translate-x-0.5 transition-transform">→</span>
+          <span className="text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all">→</span>
         </motion.button>
 
       </section>
