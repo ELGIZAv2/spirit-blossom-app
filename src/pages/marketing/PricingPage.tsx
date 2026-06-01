@@ -67,7 +67,7 @@ const PLANS: PlanCardConfig[] = [
   {
     tier: "pro",
     name: "Pro",
-    label: "MOST CHOSEN BY CREATORS",
+    label: "",
     bg: "#2563EB",
     text: "#FFFFFF",
     subText: "rgba(255,255,255,0.78)",
