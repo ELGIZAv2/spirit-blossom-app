@@ -515,21 +515,8 @@ const PricingPage = () => {
 
                 {/* Content */}
                 <div className="relative z-10 p-7 sm:p-8 flex flex-col flex-1">
-                  {/* Label (glass frame) — MOST POPULAR uses gold style for Elite */}
-                  {p.topBadge ? (
-                    <span
-                      className="self-start inline-block text-[10px] sm:text-[11px] font-black tracking-[0.18em] px-3 py-1 rounded-full mb-5"
-                      style={{
-                        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
-                        boxShadow: "0 6px 18px -4px rgba(255,165,0,0.55)",
-                        color: "#1a1a1a",
-                        animation: "gold-pulse 2.4s ease-in-out infinite",
-                        textShadow: "0 1px 2px rgba(0,0,0,0.12)",
-                      }}
-                    >
-                      {p.label || "MOST POPULAR"}
-                    </span>
-                  ) : p.label ? (
+                  {/* Label (glass frame) — Elite uses corner ribbon outside, so render placeholder here */}
+                  {!p.topBadge && p.label ? (
                     <span
                       className="self-start inline-block text-[10px] sm:text-[11px] font-bold tracking-[0.18em] px-3 py-1 rounded-full mb-5 backdrop-blur-md"
                       style={{
