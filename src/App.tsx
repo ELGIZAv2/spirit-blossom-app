@@ -62,6 +62,7 @@ const GalleryPage = lazy(() => import("./pages/media/GalleryPage"));
 
 const CommunityPage = lazy(() => import("./pages/community/CommunityPage"));
 const PricingPage = lazy(() => import("./pages/marketing/PricingPage"));
+const FeaturesGuidePage = lazy(() => import("./pages/marketing/FeaturesGuidePage"));
 const MegsyCornPage = lazy(() => import("./pages/megsy-corn/MegsyCornPage"));
 const MegsyCornRunPage = lazy(() => import("./pages/megsy-corn/MegsyCornRunPage"));
 const SettingsPage = lazy(() => import("./pages/settings/SettingsPage"));
