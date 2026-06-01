@@ -101,10 +101,7 @@ const PLANS: PlanCardConfig[] = [
     yearlyCredits: "3,500 MC / year (2 months bonus)",
     features: [
       "Everything in Pro, plus:",
-      "Images: unlimited 15 days / month (was 7)",
-      "Slides & presentations: unlimited 15 days / month",
-      "Docs & Deep Research: unlimited 15 days / month",
-      "Code Builder: unlimited 15 days / month",
+      "Unlimited 15 days / month — Images, Slides, Docs, Deep Research & Code Builder",
       "Video generation — 250 MC included",
       "Priority queue — 3× faster generations",
       "Advanced presets & custom branding",
