@@ -1,20 +1,16 @@
 import { motion } from "framer-motion";
 
 const models = [
-  { name: "Megsy", flagship: true },
-  { name: "GPT-5.5" },
-  { name: "Gemini 3 Pro" },
-  { name: "Claude 4.5" },
-  { name: "Nano Banana Pro" },
-  { name: "GPT-Image 2" },
-  { name: "Veo 3.1" },
-  { name: "Kling 3 Pro" },
-  { name: "Runway Gen-4" },
-  { name: "Grok 4" },
-  { name: "DeepSeek" },
-  { name: "Recraft V4" },
-  { name: "Ideogram 3" },
-  { name: "Luma Ray" },
+  { name: "Megsy AI", flagship: true },
+  { name: "Megsy Lite" },
+  { name: "Megsy Pro" },
+  { name: "Megsy Image" },
+  { name: "Megsy Video" },
+  { name: "Megsy Slides" },
+  { name: "Megsy Docs" },
+  { name: "Megsy Code" },
+  { name: "Megsy Research" },
+  { name: "Megsy OS" },
 ];
 
 const StatsMarquee = () => {
