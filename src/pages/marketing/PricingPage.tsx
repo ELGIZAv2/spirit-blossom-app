@@ -72,8 +72,8 @@ const PLANS: PlanCardConfig[] = [
     subText: "rgba(255,255,255,0.78)",
     monthlyPrice: 29,
     yearlyPrice: 299,
-    monthlyCredits: "Unlimited usage • no caps",
-    yearlyCredits: "Unlimited yearly • no caps",
+    monthlyCredits: "240 MC / month",
+    yearlyCredits: "2,880 MC / year",
     features: [
       "Unlimited chat — every premium model",
       "Unlimited image generation",
