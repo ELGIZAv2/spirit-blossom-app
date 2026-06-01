@@ -31,7 +31,7 @@ const tabs: Tab[] = [
   {
     title: "Image Generation",
     shortLabel: "Pick a model & prompt",
-    description: "20+ world-class models — Nano Banana Pro, GPT-Image 2, Gemini 3 Pro Image, Recraft V4 & more. From cinematic concept art to product shots.",
+    description: "Megsy Image — our in-house generator built for cinematic concept art, product shots, and photoreal scenes. One model, every style.",
     bg: "#f5d90a",
     fg: "#000",
     rotate: 3,
